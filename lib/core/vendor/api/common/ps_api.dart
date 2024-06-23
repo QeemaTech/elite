@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
@@ -98,11 +99,12 @@ abstract class PsApi {
         'Authorization': PsConfig.ps_bearer_token,
         'header-token': headerToken,
       };
+      log(headerTokenData.toString());
       response = await client.get(
         Uri.parse('${PsConfig.ps_app_url}$url'),
         headers: useHeaderToken ? headerTokenData : _headers,
       );
-      print(response.body);
+      log(response.body);
 
       final PsApiResponse psApiResponse = PsApiResponse(response);
       printGetLog(psApiResponse, response);

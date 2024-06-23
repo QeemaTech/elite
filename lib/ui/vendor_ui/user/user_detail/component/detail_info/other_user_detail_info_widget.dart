@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../../core/vendor/constant/ps_dimens.dart';
@@ -35,7 +36,6 @@ class OtherUserProfileDetailWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     const SizedBox(width: PsDimens.space8),
-                    CustomOtherUserProfilePhoto(),
                     Padding(
                       padding: const EdgeInsets.only(
                           left: PsDimens.space10, top: PsDimens.space6),
@@ -43,27 +43,47 @@ class OtherUserProfileDetailWidget extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: <Widget>[
-                              Text(
-                                provider.user.data!.name ?? '',
-                                textAlign: TextAlign.start,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleLarge,
-                                maxLines: 1,
+                              Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      Text(
+                                        provider.user.data!.name ?? '',
+                                        textAlign: TextAlign.start,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleLarge,
+                                        maxLines: 1,
+                                      ),
+                                      if (provider
+                                          .user.data!.isVefifiedBlueMarkUser)
+                                        const BluemarkIcon(
+                                          icon: Icons.verified_user,
+                                        ),
+                                    ],
+                                  ),
+                                  Text(
+                                    provider.user.data!.userPhone ?? '',
+                                    textAlign: TextAlign.start,
+                                    style:
+                                        Theme.of(context).textTheme.labelSmall,
+                                    maxLines: 1,
+                                  ),
+                                ],
                               ),
-                              if (provider.user.data!.isVefifiedBlueMarkUser)
-                                const BluemarkIcon(
-                                  icon: Icons.verified_user,
-                                ),
+                              const SizedBox(
+                                width: 8,
+                              ),
+                              CustomOtherUserProfilePhoto(),
                             ],
                           ),
-                          CustomRatingWidget(
-                            user: provider.user.data,
-                            starCount: 5,
-                          ),
-                          CustomOtherUserJoinDateTimeWidget(),
+                          // CustomRatingWidget(
+                          //   user: provider.user.data,
+                          //   starCount: 5,
+                          // ),
+                          // CustomOtherUserJoinDateTimeWidget(),
                         ],
                       ),
                     ),

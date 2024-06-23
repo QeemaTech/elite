@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:http/http.dart';
@@ -160,8 +161,11 @@ class PsApiService extends PsApi {
   ///
   Future<PsResource<User>> postUserLogin(Map<dynamic, dynamic> jsonMap,
       String headerToken, String languageCode) async {
+        log(jsonMap.toString());
     final String url =
         '${PsUrl.ps_post_ps_user_login_url}language_symbol=$languageCode';
+        log(url.toString());
+
     return await postData<User, User>(User(), url, jsonMap,
         useHeaderToken: true, headerToken: headerToken);
   }

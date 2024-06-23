@@ -11,20 +11,19 @@ class PsConfig {
   /// AppVersion
   /// For your app, you need to change according based on your app version
 
-  static const String app_version = '1.4.3.2';
+  static const String app_version = '1.0.0';
 
   ///
   /// Bearer Token
   ///
   static const String ps_bearer_token =
-      'Bearer zUMi0HNjAtnREMj3weG7XEv6ogEVovsf6eUFgOp4';
+      'Bearer oM0fIICt3JzjA6ePgn0U0rJNsOYRxODJF4TPq9B2';
 
   ///
   /// API URL
   /// Change your backend url
   ///
-  static const String ps_core_url =
-      'https://www.products.panacea-soft.co/psx-mpc-demo';
+  static const String ps_core_url = 'https://salegates.com';
 
   //'https://www.products.panacea-soft.co/psx-mpc-dev5';
   //'https://www.products.panacea-soft.co/psx-mpc-dev5';

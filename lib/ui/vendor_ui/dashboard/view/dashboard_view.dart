@@ -262,7 +262,7 @@ class _HomeViewState extends State<DashboardView>
     // timeDilation = 1.0;
 
     if (isFirstTime) {
-      appBarTitle = 'app_name'.tr;
+      appBarTitle = 'Sale Gates'.tr;
 
       Utils.subscribeToTopic(psValueHolder!.notiSetting ?? true);
       Utils.fcmConfigure(context, _fcm, psValueHolder!.loginUserId, () {
@@ -304,7 +304,7 @@ class _HomeViewState extends State<DashboardView>
 
     dynamic callLogout(UserProvider provider,
         DeleteTaskProvider deleteTaskProvider, int index) async {
-      appBarTitle = 'app_name'.tr;
+      appBarTitle = 'Sale Gates'.tr;
       await updateSelectedIndex(index);
       await provider.replaceLoginUserId('');
       //   await provider.replaceOwnerUserId('');

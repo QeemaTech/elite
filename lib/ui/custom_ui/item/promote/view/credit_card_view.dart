@@ -35,14 +35,16 @@ class CustomCreditCardView extends StatefulWidget {
 class CreditCardViewState extends State<CustomCreditCardView> {
   @override
   Widget build(BuildContext context) {
-    return CreditCardView(
-        product: widget.product,
-        amount: widget.amount,
-        howManyDay: widget.howManyDay,
-        paymentMethod: widget.paymentMethod,
-        stripePublishableKey: widget.stripePublishableKey,
-        startDate: widget.startDate,
-        startTimeStamp: widget.startTimeStamp,
-        itemPaidHistoryProvider: widget.itemPaidHistoryProvider);
+    return Container();
+
+    // CreditCardView(
+    //     product: widget.product,
+    //     amount: widget.amount,
+    //     howManyDay: widget.howManyDay,
+    //     paymentMethod: widget.paymentMethod,
+    //     stripePublishableKey: widget.stripePublishableKey,
+    //     startDate: widget.startDate,
+    //     startTimeStamp: widget.startTimeStamp,
+    //     itemPaidHistoryProvider: widget.itemPaidHistoryProvider);
   }
 }

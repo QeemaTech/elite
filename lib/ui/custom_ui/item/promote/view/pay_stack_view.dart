@@ -40,16 +40,17 @@ class CustomPayStackView extends StatefulWidget {
 class PayStackViewState extends State<CustomPayStackView> {
   @override
   Widget build(BuildContext context) {
-    return PayStackView(
-        product: widget.product,
-        amount: widget.amount,
-        howManyDay: widget.howManyDay,
-        paymentMethod: widget.paymentMethod,
-        stripePublishableKey: widget.stripePublishableKey,
-        startDate: widget.startDate,
-        startTimeStamp: widget.startTimeStamp,
-        itemPaidHistoryProvider: widget.itemPaidHistoryProvider,
-        userProvider: widget.userProvider,
-        payStackKey: widget.payStackKey);
+    return Container();
+    // return PayStackView(
+    //     product: widget.product,
+    //     amount: widget.amount,
+    //     howManyDay: widget.howManyDay,
+    //     paymentMethod: widget.paymentMethod,
+    //     stripePublishableKey: widget.stripePublishableKey,
+    //     startDate: widget.startDate,
+    //     startTimeStamp: widget.startTimeStamp,
+    //     itemPaidHistoryProvider: widget.itemPaidHistoryProvider,
+    //     userProvider: widget.userProvider,
+    //     payStackKey: widget.payStackKey);
   }
 }

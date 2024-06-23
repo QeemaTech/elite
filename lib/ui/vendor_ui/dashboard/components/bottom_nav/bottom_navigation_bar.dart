@@ -316,7 +316,7 @@ class BottomNavigationWidgetState<T extends BottomNaviationWidget>
     switch (param) {
       case 0:
         index = PsConst.REQUEST_CODE__MENU_HOME_FRAGMENT;
-        title = 'app_name'.tr;
+        title = 'Sale Gates'.tr;
         break;
       case 1:
         index = PsConst.REQUEST_CODE__DASHBOARD_MESSAGE_FRAGMENT;
@@ -343,7 +343,7 @@ class BottomNavigationWidgetState<T extends BottomNaviationWidget>
 
       default:
         index = 0;
-        title = ''; //Utils.getString(context, 'app_name');
+        title = ''; //Utils.getString(context, 'Sale Gates');
         break;
     }
     return <dynamic>[title, index];

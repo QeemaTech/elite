@@ -14,10 +14,11 @@ class PsHeaderIconAndDynamicTextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Widget _textWidget = Text(
-      text ?? 'app_name'.tr,
+      text ?? 'Sale Gates'.tr,
       style: Theme.of(context).textTheme.titleLarge!.copyWith(
           color: Utils.isLightMode(context)
-              ? PsColors.achromatic800 : PsColors.achromatic50,
+              ? PsColors.achromatic800
+              : PsColors.achromatic50,
           fontSize: 20,
           fontWeight: FontWeight.w600),
     );

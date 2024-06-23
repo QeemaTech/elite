@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_braintree/flutter_braintree.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
+//import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:nested/nested.dart';
 import 'package:provider/provider.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
@@ -39,19 +39,19 @@ import '../../../../common/dialog/warning_dialog_view.dart';
 import '../../order_place/widgets/order_place_button.dart';
 
 class PlaceOrderButton extends StatefulWidget {
-  const PlaceOrderButton({
-    Key? key,
-    required this.shoppingCartList,
-    required this.defaultShippingAndBilling,
-    required this.isSingleItemCheckout,
-    required this.totalPrice,
-    required this.currencySymbol,
-    required this.vendorCurrencyShortForm,
-    required this.vendorId,
-    required this.vendorExpOrSoldOut,
-    required this.color,
-    this.titleTextColor
-  }) : super(key: key);
+  const PlaceOrderButton(
+      {Key? key,
+      required this.shoppingCartList,
+      required this.defaultShippingAndBilling,
+      required this.isSingleItemCheckout,
+      required this.totalPrice,
+      required this.currencySymbol,
+      required this.vendorCurrencyShortForm,
+      required this.vendorId,
+      required this.vendorExpOrSoldOut,
+      required this.color,
+      this.titleTextColor})
+      : super(key: key);
 
   final List<ShoppingCartItem> shoppingCartList;
   final bool defaultShippingAndBilling;
@@ -122,7 +122,7 @@ class _PlaceOrderButtonState extends State<PlaceOrderButton> {
         ),
       ],
       child: OrderPlaceButtonWidget(
-        titleTextColor: widget.titleTextColor,
+          titleTextColor: widget.titleTextColor,
           color: widget.color,
           onPressed: !widget.vendorExpOrSoldOut
               ? () async {
@@ -163,12 +163,12 @@ class _PlaceOrderButtonState extends State<PlaceOrderButton> {
                       ));
 
                       /// Item Quantity
-                        product.data?.productRelation
-                            ?.forEach((ProductRelation element) {
-                          if (element.coreKeyId == 'ps-itm00046') {
-                            itemQuantity = int.parse(element.value.toString());
-                          }
-                        });
+                      product.data?.productRelation
+                          ?.forEach((ProductRelation element) {
+                        if (element.coreKeyId == 'ps-itm00046') {
+                          itemQuantity = int.parse(element.value.toString());
+                        }
+                      });
 
                       if (product.data!.isSoldOutItem) {
                         PsProgressDialog.dismissDialog();
@@ -297,8 +297,8 @@ class _PlaceOrderButtonState extends State<PlaceOrderButton> {
         vendorInfoProvider?.selectedValue == 2) {
       PsProgressDialog.dismissDialog();
 
-      Stripe.publishableKey = vendorInfoProvider
-                  ?.vendorInfo.data?.vendorStripePublishableKey ?? '';
+      // Stripe.publishableKey = vendorInfoProvider
+      //             ?.vendorInfo.data?.vendorStripePublishableKey ?? '';
 
       Navigator.of(context).pushNamed(RoutePaths.vendorCreditCard,
           arguments: PaymentHolder(
@@ -310,7 +310,7 @@ class _PlaceOrderButtonState extends State<PlaceOrderButton> {
               vendorId: widget.vendorId,
               paymentStripeKey: vendorInfoProvider
                   ?.vendorInfo.data?.vendorStripePublishableKey,
-                  isSingleCheckout: isSingleCheckout));
+              isSingleCheckout: isSingleCheckout));
     } else if (data.data?.orderId != null &&
         vendorInfoProvider?.selectedValue == 3) {
       PsProgressDialog.dismissDialog();

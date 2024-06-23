@@ -112,30 +112,30 @@ class _LoginViewState extends State<LoginView> {
                 onProfileSelected: widget.onProfileSelected,
                 callBackAfterLoginSuccess: callBackAfterLoginSuccess,
               ),
-              if (Platform.isIOS ||
-                  psValueHolder!.showPhoneLogin! ||
-                  psValueHolder!.showGoogleLogin! ||
-                  psValueHolder!.showFacebookLogin!)
-                CustomDividerORWidget(),
-              if (psValueHolder!.showPhoneLogin!)
-                CustomLoginWithPhoneWidget(
-                  onPhoneSignInSelected: widget.onPhoneSignInSelected,
-                ),
-              if (psValueHolder!.showGoogleLogin!)
-                CustomLoginWithGoogleWidget(
-                  onGoogleSignInSelected: widget.onGoogleSignInSelected,
-                  callBackAfterLoginSuccess: callBackAfterLoginSuccess,
-                ),
-              if (psValueHolder!.showFacebookLogin!)
-                CustomLoginWithFbWidget(
-                  onFbSignInSelected: widget.onFbSignInSelected,
-                  callBackAfterLoginSuccess: callBackAfterLoginSuccess,
-                ),
-              if (Utils.isAppleSignInAvailable == 1 && Platform.isIOS)
-                CustomLoginWithAppleIdWidget(
-                  onAppleIdSignInSelected: widget.onGoogleSignInSelected,
-                  callBackAfterLoginSuccess: callBackAfterLoginSuccess,
-                ),
+              // if (Platform.isIOS ||
+              //     psValueHolder!.showPhoneLogin! ||
+              //     psValueHolder!.showGoogleLogin! ||
+              //     psValueHolder!.showFacebookLogin!)
+              //   CustomDividerORWidget(),
+              // if (psValueHolder!.showPhoneLogin!)
+              //   CustomLoginWithPhoneWidget(
+              //     onPhoneSignInSelected: widget.onPhoneSignInSelected,
+              //   ),
+              // if (psValueHolder!.showGoogleLogin!)
+              //   CustomLoginWithGoogleWidget(
+              //     onGoogleSignInSelected: widget.onGoogleSignInSelected,
+              //     callBackAfterLoginSuccess: callBackAfterLoginSuccess,
+              //   ),
+              // if (psValueHolder!.showFacebookLogin!)
+              //   CustomLoginWithFbWidget(
+              //     onFbSignInSelected: widget.onFbSignInSelected,
+              //     callBackAfterLoginSuccess: callBackAfterLoginSuccess,
+              //   ),
+              // if (Utils.isAppleSignInAvailable == 1 && Platform.isIOS)
+              //   CustomLoginWithAppleIdWidget(
+              //     onAppleIdSignInSelected: widget.onGoogleSignInSelected,
+              //     callBackAfterLoginSuccess: callBackAfterLoginSuccess,
+              //   ),
               const SizedBox(
                 height: PsDimens.space44,
               ),
@@ -161,24 +161,24 @@ class _LoginViewState extends State<LoginView> {
 
   void callBackAfterLoginSuccess(User user) {
     if (psValueHolder!.isForceLogin!) {
-        if (psValueHolder!.isLanguageConfig! &&
-            psValueHolder!.showOnboardLanguage) {
-          Navigator.pushReplacementNamed(context, RoutePaths.languagesetting);
-        } else {
-          if (psValueHolder!.locationId != null) {
-            Navigator.pushReplacementNamed(
-              context,
-              RoutePaths.home,
-            );
-          } else {
-            Navigator.pushReplacementNamed(
-              context,
-              RoutePaths.itemLocationList,
-            );
-          }
-        }
+      if (psValueHolder!.isLanguageConfig! &&
+          psValueHolder!.showOnboardLanguage) {
+        Navigator.pushReplacementNamed(context, RoutePaths.languagesetting);
       } else {
-        Navigator.pop(context, user);
+        if (psValueHolder!.locationId != null) {
+          Navigator.pushReplacementNamed(
+            context,
+            RoutePaths.home,
+          );
+        } else {
+          Navigator.pushReplacementNamed(
+            context,
+            RoutePaths.itemLocationList,
+          );
+        }
       }
+    } else {
+      Navigator.pop(context, user);
+    }
   }
 }

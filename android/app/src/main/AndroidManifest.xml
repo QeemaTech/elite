@@ -22,7 +22,7 @@
     <application
         android:name=".Application" 
         tools:replace="android:label"
-        android:label="Elite"
+        android:label="Sale Gates"
         android:usesCleartextTraffic="true"        
         android:icon="@mipmap/ic_launcher">
         <meta-data android:name="com.google.android.geo.API_KEY"

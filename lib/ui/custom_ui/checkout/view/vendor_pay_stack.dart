@@ -32,17 +32,18 @@ class CustomVendorPayStackView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return VendorPayStackView(
-      currencyId: currencyId,
-      orderId: orderId,
-      amount: amount,
-      userId: userId,
-      vendorId: vendorId,
-      userProvider: userProvider,
-      vendorItemBoughtProvider: vendorItemBoughtProvider,
-      vendorPayStackKey: vendorPayStackKey,
-      itemDetailProvider: itemDetailProvider,
-      isSingleCheckout: isSingleCheckout,
-    );
+    return Container();
+    // return VendorPayStackView(
+    //   currencyId: currencyId,
+    //   orderId: orderId,
+    //   amount: amount,
+    //   userId: userId,
+    //   vendorId: vendorId,
+    //   userProvider: userProvider,
+    //   vendorItemBoughtProvider: vendorItemBoughtProvider,
+    //   vendorPayStackKey: vendorPayStackKey,
+    //   itemDetailProvider: itemDetailProvider,
+    //   isSingleCheckout: isSingleCheckout,
+    // );
   }
 }

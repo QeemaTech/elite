@@ -647,7 +647,7 @@ class _PsNetworkCircleImageForUserState
         return GestureDetector(
             onTap: widget.onTap as void Function()?,
             child: ClipRRect(
-                borderRadius: BorderRadius.circular(10000.0),
+                borderRadius: BorderRadius.circular(10.0),
                 child: Image.asset(
                   'assets/images/user_default_photo.png',
                   width: width,
@@ -662,7 +662,7 @@ class _PsNetworkCircleImageForUserState
             child: Hero(
               tag: '${widget.photoKey}${widget.asset}',
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(10000.0),
+                borderRadius: BorderRadius.circular(10.0),
                 child: Image.asset(widget.asset!,
                     width: width, height: height, fit: widget.boxfit),
               ),
@@ -678,7 +678,7 @@ class _PsNetworkCircleImageForUserState
         return GestureDetector(
             onTap: widget.onTap as void Function()?,
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(10000.0),
+              borderRadius: BorderRadius.circular(10.0),
               child: CachedNetworkImage(
                 placeholder: (BuildContext context, String url) {
                   if (psValueHolder.isUseThumbnailAsPlaceHolder!) {

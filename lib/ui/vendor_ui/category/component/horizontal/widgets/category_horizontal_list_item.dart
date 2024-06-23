@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import '../../../../../../config/ps_colors.dart';
 
@@ -66,36 +67,36 @@ class CategoryHorizontalListItem extends StatelessWidget {
                   },
                   child: Ink(
                     child: Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          //cat image
-                          ClipRRect(
-                            borderRadius:
-                                BorderRadius.circular(PsDimens.space24),
-                            child: Container(
-                              width: PsDimens.space44,
-                              height: PsDimens.space44,
-                              color: Utils.isLightMode(context)
-                                  ? PsColors.text100
-                                  : PsColors.achromatic200,
-                              padding: const EdgeInsets.all(PsDimens.space10),
-                              child: PsNetworkIcon(
-                                imageAspectRation: PsConst.Aspect_Ratio_1x,
-                                photoKey: '',
-                                defaultIcon: category.defaultIcon,
-                                boxfit: BoxFit.cover,
+                      child: Container(
+                        width: PsDimens.space100,
+                        height: PsDimens.space100,
+                        // color: Utils.isLightMode(context)
+                        //     ? PsColors.text100
+                        //     : PsColors.achromatic200,
+                        padding: const EdgeInsets.all(PsDimens.space10),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            //cat image
+                            Expanded(
+                              child: ClipRRect(
+                                borderRadius:
+                                    BorderRadius.circular(PsDimens.space24),
+                                child: PsNetworkIcon(
+                                  imageAspectRation: PsConst.Aspect_Ratio_1x,
+                                  photoKey: '',
+                                  defaultIcon: category.defaultIcon,
+                                  boxfit: BoxFit.cover,
+                                ),
                               ),
                             ),
-                          ),
-                          const SizedBox(
-                            height: PsDimens.space8,
-                          ),
-                          //cat name
-                          Flexible(
-                            child: Text(
+                            const SizedBox(
+                              height: PsDimens.space8,
+                            ),
+                            //cat name
+                            Text(
                               category.catName!,
                               textAlign: TextAlign.center,
                               overflow: TextOverflow.ellipsis,
@@ -105,11 +106,12 @@ class CategoryHorizontalListItem extends StatelessWidget {
                                   .bodyLarge!
                                   .copyWith(
                                       color: Utils.isLightMode(context)
-                                          ? PsColors.text600 : PsColors.text50,
-                                      fontSize: 16),
+                                          ? PsColors.text600
+                                          : PsColors.text50,
+                                      fontSize: 12),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),

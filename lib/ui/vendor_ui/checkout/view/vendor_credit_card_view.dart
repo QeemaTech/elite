@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
+//import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:provider/provider.dart';
 import '../../../../../../core/vendor/constant/ps_dimens.dart';
 import '../../../../../../core/vendor/provider/language/app_localization_provider.dart';
@@ -51,7 +51,7 @@ class VendorCreditCardView extends StatefulWidget {
 }
 
 class VendorCreditCardViewState extends State<VendorCreditCardView> {
-  CardFieldInputDetails? cardData;
+  // CardFieldInputDetails? cardData;
 
   @override
   void initState() {
@@ -60,10 +60,10 @@ class VendorCreditCardViewState extends State<VendorCreditCardView> {
   }
 
   Future<void> loadStripe() async {
-    Stripe.publishableKey = widget.vendorStripePulicKey ?? '';
-    Stripe.merchantIdentifier = 'merchant.flutter.stripe.test';
-    Stripe.urlScheme = 'flutterstripe';
-    await Stripe.instance.applySettings();
+    // Stripe.publishableKey = widget.vendorStripePulicKey ?? '';
+    // Stripe.merchantIdentifier = 'merchant.flutter.stripe.test';
+    // Stripe.urlScheme = 'flutterstripe';
+    // await Stripe.instance.applySettings();
   }
 
   @override
@@ -72,17 +72,17 @@ class VendorCreditCardViewState extends State<VendorCreditCardView> {
       appBarTitle: 'item_promote__credit_card_title'.tr,
       child: Column(
         children: <Widget>[
-          Container(
-            padding: const EdgeInsets.all(PsDimens.space16),
-            child: CardField(
-              autofocus: false,
-              onCardChanged: (CardFieldInputDetails? card) async {
-                setState(() {
-                  cardData = card;
-                });
-              },
-            ),
-          ),
+          // Container(
+          //   padding: const EdgeInsets.all(PsDimens.space16),
+          //   child: CardField(
+          //     autofocus: false,
+          //     onCardChanged: (CardFieldInputDetails? card) async {
+          //       setState(() {
+          //         cardData = card;
+          //       });
+          //     },
+          //   ),
+          // ),
           Container(
             margin: const EdgeInsets.only(
                 left: PsDimens.space12, right: PsDimens.space12),
@@ -91,24 +91,24 @@ class VendorCreditCardViewState extends State<VendorCreditCardView> {
               width: double.infinity,
               titleText: 'credit_card__pay'.tr,
               onPressed: () async {
-                if (cardData != null && cardData!.complete) {
-                  await PsProgressDialog.showDialog(context);
+                // if (cardData != null && cardData!.complete) {
+                //   await PsProgressDialog.showDialog(context);
 
-                  const PaymentMethodParams paymentMethodParams =
-                      PaymentMethodParams.card(
-                          paymentMethodData: PaymentMethodData(
-                              billingDetails: BillingDetails()));
+                //   // const PaymentMethodParams paymentMethodParams =
+                //   //     PaymentMethodParams.card(
+                //   //         paymentMethodData: PaymentMethodData(
+                //   //             billingDetails: BillingDetails()));
 
-                  final PaymentMethod paymentMethod = await Stripe.instance
-                      .createPaymentMethod(params: paymentMethodParams);
-                  Utils.psPrint(paymentMethod.id);
-                  print('stripe token=>${paymentMethod.id}');
+                //   // final PaymentMethod paymentMethod = await Stripe.instance
+                //   //     .createPaymentMethod(params: paymentMethodParams);
+                //   Utils.psPrint(paymentMethod.id);
+                //   print('stripe token=>${paymentMethod.id}');
 
-                  await stripeNow(paymentMethod.id,
-                      widget.vendorItemBoughtProvider, widget.itemId);
-                } else {
-                  callWarningDialog(context, 'contact_us__fail'.tr);
-                }
+                //   await stripeNow(paymentMethod.id,
+                //       widget.vendorItemBoughtProvider, widget.itemId);
+                // } else {
+                //   callWarningDialog(context, 'contact_us__fail'.tr);
+                // }
               },
             ),
           ),

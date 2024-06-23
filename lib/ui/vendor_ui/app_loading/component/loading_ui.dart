@@ -12,13 +12,18 @@ class LoadingUi extends StatelessWidget {
     final Widget _imageWidget = Container(
       width: 90,
       height: 90,
-      child: Image.asset(
-        'assets/images/flutter_buy_and_sell_logo.png',
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(30),
+        child: Image.asset(
+          'assets/images/flutter_buy_and_sell_logo.png',
+        ),
       ),
     );
     return Container(
         height: 400,
-        color: Utils.isLightMode(context) ? PsColors.achromatic50 : PsColors.achromatic800,
+        color: Utils.isLightMode(context)
+            ? PsColors.primary50
+            : PsColors.primary50,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -29,15 +34,13 @@ class LoadingUi extends StatelessWidget {
                 const SizedBox(
                   height: PsDimens.space16,
                 ),
-                Text(
-                  'app_name'.tr,
-                  style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: Utils.isLightMode(context)
-                        ? PsColors.achromatic700
-                        : PsColors.achromatic50,
-                  )
-                ),
+                Text('Sale Gates'.tr,
+                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Utils.isLightMode(context)
+                              ? PsColors.achromatic700
+                              : PsColors.achromatic50,
+                        )),
                 const SizedBox(
                   height: PsDimens.space8,
                 ),

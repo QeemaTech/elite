@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:provider/provider.dart';
@@ -110,12 +112,15 @@ class ItemEntryViewState<T extends ItemEntryView> extends State<ItemEntryView> {
                 itemEntryFieldProvider!.chooseThisProfile = true;
               } else if (widget.flag == PsConst.EDIT_ITEM) {
                 if (widget.item?.vendorId == '') {
-                  itemEntryFieldProvider!.selectedVendorId = PsConst.USER_PROFILE;
+                  itemEntryFieldProvider!.selectedVendorId =
+                      PsConst.USER_PROFILE;
                 } else {
-                  itemEntryFieldProvider!.selectedVendorId = widget.item?.vendorId; 
+                  itemEntryFieldProvider!.selectedVendorId =
+                      widget.item?.vendorId;
                 }
 
-                if (valueHolder!.vendorProfileId == itemEntryFieldProvider!.selectedVendorId) {
+                if (valueHolder!.vendorProfileId ==
+                    itemEntryFieldProvider!.selectedVendorId) {
                   itemEntryFieldProvider!.chooseThisProfile = true;
                 }
               }
@@ -189,10 +194,12 @@ class ItemEntryViewState<T extends ItemEntryView> extends State<ItemEntryView> {
                     ? PsColors.achromatic50
                     : PsColors.achromatic800,
               );
+
             if (widget.flag == PsConst.EDIT_ITEM ||
                 (valueHolder!.isPaidApp != PsConst.ONE ||
                     (provider.user.data != null &&
-                        int.parse(provider.user.data!.remainingPost!) > 0)))
+                        int.parse(provider.user.data?.remainingPost ?? '0') >
+                            0)))
               return SingleChildScrollView(child:
                   Consumer2<ItemEntryProvider, ItemEntryFieldProvider>(builder:
                       (BuildContext context,

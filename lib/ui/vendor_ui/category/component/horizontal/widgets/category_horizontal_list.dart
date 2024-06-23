@@ -30,7 +30,7 @@ class CategoryHorizontalList extends StatelessWidget {
           shrinkWrap: true,
           padding: EdgeInsets.zero,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 4),
+              crossAxisCount: 3),
           itemBuilder: (BuildContext context, int index) {
             return CustomCategoryHorizontalListItem(
               category: isLoading

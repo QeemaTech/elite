@@ -48,7 +48,7 @@ class DashboardAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       titleSpacing: 0,
       elevation: 0,
-      iconTheme: IconThemeData(color: Theme.of(context).primaryColor),
+      iconTheme: IconThemeData(color: Theme.of(context).primaryColorLight),
       titleTextStyle: const TextStyle(
           fontFamily: PsConst.ps_default_font_family,
           fontWeight: FontWeight.bold,
