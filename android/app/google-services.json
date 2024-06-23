@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "981748160390",
+    "project_id": "elite-cbfc6",
+    "storage_bucket": "elite-cbfc6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:981748160390:android:be4a052d1bd4fea2e63e07",
+        "android_client_info": {
+          "package_name": "com.qeema.elite"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQTXPMrZDLFMYQLjfCoN8gSTnJuDsXs4Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
