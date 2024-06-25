@@ -196,74 +196,74 @@ class ItemEntryViewState<T extends ItemEntryView> extends State<ItemEntryView> {
                     : PsColors.achromatic800,
               );
 
-            if (widget.flag == PsConst.EDIT_ITEM ||
-                (valueHolder!.isPaidApp != PsConst.ONE ||
+            /* if (widget.flag == PsConst.EDIT_ITEM ||
+                (valueHolder!.isPaidApp !=
+                    PsConst
+                        .ONE ||
                     (provider.user.data != null &&
                         (int.tryParse(
                                     provider.user.data?.remainingPost ?? '0') ??
                                 0) >
-                            0)))
-              return SingleChildScrollView(child:
-                  Consumer2<ItemEntryProvider, ItemEntryFieldProvider>(builder:
-                      (BuildContext context,
-                          ItemEntryProvider provider,
-                          ItemEntryFieldProvider itemEntryFieldProvider,
-                          Widget? child) {
-                itemEntryFieldProvider.categoryCoreField =
-                    itemEntryFieldProvider
-                        .getCoreFieldByFieldName(PsConst.FIELD_NAME_CATEGORY);
-                /**
+                            0)
+                )) */
+            return SingleChildScrollView(child:
+                Consumer2<ItemEntryProvider, ItemEntryFieldProvider>(builder:
+                    (BuildContext context,
+                        ItemEntryProvider provider,
+                        ItemEntryFieldProvider itemEntryFieldProvider,
+                        Widget? child) {
+              itemEntryFieldProvider.categoryCoreField = itemEntryFieldProvider
+                  .getCoreFieldByFieldName(PsConst.FIELD_NAME_CATEGORY);
+              /**
                  * UI SECTION
                  */
-                return AnimatedBuilder(
-                    animation: widget.animationController!,
-                    builder: (BuildContext context, Widget? child) {
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          if (valueHolder?.vendorFeatureSetting == PsConst.ONE)
-                            CustomChooseProfileWidget(flag: widget.flag!),
-                          //Category
-                          if (widget.flag == PsConst.EDIT_ITEM &&
-                              _itemEntryProvider.item!.id != null)
-                            CoreFieldContainer(
-                              child: CustomChooseCategoryDropDownWidget(
-                                categoryController: categoryController,
-                                subCategoryController: subCategoryController,
-                                isMandatory: itemEntryFieldProvider
-                                    .categoryCoreField.isMandatory,
-                                isShowDropDown: false,
-                              ),
-                              coreField:
-                                  itemEntryFieldProvider.categoryCoreField,
-                            )
-                          else
-                            CoreFieldContainer(
-                              child: CustomChooseCategoryDropDownWidget(
-                                categoryController: categoryController,
-                                subCategoryController: subCategoryController,
-                                isMandatory: itemEntryFieldProvider
-                                    .categoryCoreField.isMandatory,
-                                isShowDropDown: true,
-                              ),
-                              coreField:
-                                  itemEntryFieldProvider.categoryCoreField,
+              return AnimatedBuilder(
+                  animation: widget.animationController!,
+                  builder: (BuildContext context, Widget? child) {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        if (valueHolder?.vendorFeatureSetting == PsConst.ONE)
+                          CustomChooseProfileWidget(flag: widget.flag!),
+                        //Category
+                        if (widget.flag == PsConst.EDIT_ITEM &&
+                            _itemEntryProvider.item!.id != null)
+                          CoreFieldContainer(
+                            child: CustomChooseCategoryDropDownWidget(
+                              categoryController: categoryController,
+                              subCategoryController: subCategoryController,
+                              isMandatory: itemEntryFieldProvider
+                                  .categoryCoreField.isMandatory,
+                              isShowDropDown: false,
                             ),
-                          CustomImageUploadHorizontalList(
-                              addNewItem: widget.flag,
-                              maxImageCount: valueHolder!.maxImageCount),
-                          CustomCoreAndCustomFieldEntryView(
-                            flag: widget.flag,
-                            item: widget.item,
-                            onItemUploaded: widget.onItemUploaded,
-                            categoryId: widget.categoryId,
-                            isFromChat: widget.isFromChat,
+                            coreField: itemEntryFieldProvider.categoryCoreField,
+                          )
+                        else
+                          CoreFieldContainer(
+                            child: CustomChooseCategoryDropDownWidget(
+                              categoryController: categoryController,
+                              subCategoryController: subCategoryController,
+                              isMandatory: itemEntryFieldProvider
+                                  .categoryCoreField.isMandatory,
+                              isShowDropDown: true,
+                            ),
+                            coreField: itemEntryFieldProvider.categoryCoreField,
                           ),
-                          const SizedBox(height: PsDimens.space80)
-                        ],
-                      );
-                    });
-              }));
+                        CustomImageUploadHorizontalList(
+                            addNewItem: widget.flag,
+                            maxImageCount: valueHolder!.maxImageCount),
+                        CustomCoreAndCustomFieldEntryView(
+                          flag: widget.flag,
+                          item: widget.item,
+                          onItemUploaded: widget.onItemUploaded,
+                          categoryId: widget.categoryId,
+                          isFromChat: widget.isFromChat,
+                        ),
+                        const SizedBox(height: PsDimens.space80)
+                      ],
+                    );
+                  });
+            }));
             return CustomGoToPackageShopView();
           },
         ),
