@@ -11,13 +11,12 @@ import '../../../../../../config/ps_config.dart';
 import '../../../../custom_ui/item/entry/component/item_entry_view.dart';
 
 class ItemEntryContainerView extends StatefulWidget {
-  const ItemEntryContainerView({
-    required this.flag,
-    required this.categoryId,
-    required this.categoryName,
-    required this.item,
-    this.isFromChat
-  });
+  const ItemEntryContainerView(
+      {required this.flag,
+      required this.categoryId,
+      required this.categoryName,
+      required this.item,
+      this.isFromChat});
   final String flag;
   final Product? item;
   final String categoryId;
@@ -72,14 +71,15 @@ class ItemEntryContainerViewState<T extends ItemEntryContainerView>
         if (didPop) {
           return;
         }
-          _requestPop();
+        _requestPop();
       },
       child: Scaffold(
         appBar: AppBar(
           systemOverlayStyle: SystemUiOverlayStyle(
             statusBarIconBrightness: Utils.getBrightnessForAppBar(context),
           ),
-          backgroundColor: Utils.isLightMode(context) ? PsColors.achromatic50
+          backgroundColor: Utils.isLightMode(context)
+              ? PsColors.achromatic50
               : PsColors.achromatic900,
           iconTheme: Theme.of(context).iconTheme.copyWith(
               color: Utils.isLightMode(context)
@@ -89,22 +89,22 @@ class ItemEntryContainerViewState<T extends ItemEntryContainerView>
             'item_entry__listing_entry'.tr,
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                fontWeight: FontWeight.bold,
-                color: Utils.isLightMode(context)
-                    ? PsColors.primary500
-                    : PsColors.achromatic50),
+                  fontWeight: FontWeight.bold,
+                  color: Utils.isLightMode(context)
+                      ? PsColors.primary500
+                      : PsColors.achromatic50,
+                ),
           ),
           elevation: 0,
         ),
         body: CustomItemEntryView(
-          animationController: animationController,
-          flag: widget.flag,
-          item: widget.item,
-          categoryId: widget.categoryId,
-          categoryName: widget.categoryName,
-          maxImageCount: psValueHolder.maxImageCount,
-          isFromChat: widget.isFromChat
-        ),
+            animationController: animationController,
+            flag: widget.flag,
+            item: widget.item,
+            categoryId: widget.categoryId,
+            categoryName: widget.categoryName,
+            maxImageCount: psValueHolder.maxImageCount,
+            isFromChat: widget.isFromChat),
       ),
     );
   }

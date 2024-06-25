@@ -186,6 +186,7 @@ class ItemEntryViewState<T extends ItemEntryView> extends State<ItemEntryView> {
         child: Consumer<UserProvider>(
           builder:
               (BuildContext context, UserProvider provider, Widget? child) {
+            log('remaining post ${provider.user.data?.remainingPost}');
             if (widget.flag == PsConst.ADD_NEW_ITEM &&
                 valueHolder!.isPaidApp == PsConst.ONE &&
                 provider.user.data == null)
@@ -198,7 +199,9 @@ class ItemEntryViewState<T extends ItemEntryView> extends State<ItemEntryView> {
             if (widget.flag == PsConst.EDIT_ITEM ||
                 (valueHolder!.isPaidApp != PsConst.ONE ||
                     (provider.user.data != null &&
-                        int.parse(provider.user.data?.remainingPost ?? '0') >
+                        (int.tryParse(
+                                    provider.user.data?.remainingPost ?? '0') ??
+                                0) >
                             0)))
               return SingleChildScrollView(child:
                   Consumer2<ItemEntryProvider, ItemEntryFieldProvider>(builder:
