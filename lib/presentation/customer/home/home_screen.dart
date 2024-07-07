@@ -6,11 +6,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:salegates/core/theme/colors.dart';
 import 'package:salegates/core/theme/theme.dart';
-import 'package:salegates/presentation/customer/home/widgets/category_card_widget.dart';
-import 'package:salegates/presentation/customer/home/widgets/horizintal_real_estate_card.dart';
+import 'package:salegates/presentation/cards/category_card_widget.dart';
+import 'package:salegates/presentation/cards/horizintal_real_estate_card.dart';
 import 'package:salegates/presentation/customer/home/widgets/search_bar_widget.dart';
 import 'package:salegates/presentation/customer/home/widgets/story_widget.dart';
-import 'package:salegates/presentation/customer/home/widgets/vertical_real_estate_card.dart';
+import 'package:salegates/presentation/cards/vertical_real_estate_card.dart';
 import 'package:text_scroll/text_scroll.dart';
 
 class CustomerHomeScreen extends StatefulWidget {
@@ -397,7 +397,9 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                       itemBuilder: (context, index) {
                         return SizedBox(
                           height: 120.h,
-                          child: VerticalRealEstateCard(),
+                          child: VerticalRealEstateCard(
+                            edit: false,
+                          ),
                         );
                       })
                 ]),

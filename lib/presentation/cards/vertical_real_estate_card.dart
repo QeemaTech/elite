@@ -5,7 +5,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:salegates/core/theme/theme.dart';
 
 class VerticalRealEstateCard extends StatelessWidget {
-  const VerticalRealEstateCard({super.key});
+  const VerticalRealEstateCard({super.key, required this.edit, this.image});
+  final bool edit;
+  final String? image;
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +21,9 @@ class VerticalRealEstateCard extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(6.r),
               child: Image.asset(
-                "assets/images/comm_ad1.png",
+                image ?? "assets/images/comm_ad1.png",
                 width: 100.w,
+                height: 90.h,
                 fit: BoxFit.cover,
               ),
             ),
@@ -36,10 +39,16 @@ class VerticalRealEstateCard extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: AppTheme.textBody16black39weight400(),
                 ),
+                SizedBox(
+                  height: 5.h,
+                ),
                 Text(
                   "44.0" + " " + "KWD",
                   style: AppTheme.textBodyprimaryWeight700()
                       .copyWith(fontSize: 14.sp),
+                ),
+                SizedBox(
+                  height: 5.h,
                 ),
                 Row(
                   children: [
@@ -90,7 +99,14 @@ class VerticalRealEstateCard extends StatelessWidget {
               ],
             ),
             Spacer(),
-            SvgPicture.asset("assets/svgs/fav_red.svg"),
+            edit
+                ? GestureDetector(
+                    onTap: () {},
+                    child: SvgPicture.asset("assets/svgs/more.svg"),
+                  )
+                : GestureDetector(
+                    onTap: () {},
+                    child: SvgPicture.asset("assets/svgs/fav_red.svg")),
           ],
         ),
       ),

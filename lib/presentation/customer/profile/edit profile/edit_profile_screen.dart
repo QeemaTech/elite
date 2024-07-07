@@ -6,7 +6,7 @@ import 'package:salegates/core/theme/colors.dart';
 import 'package:salegates/core/theme/theme.dart';
 import 'package:salegates/core/widgets/common_widgets.dart';
 import 'package:salegates/presentation/auth/widgets/auth_text_edit.dart';
-import 'package:salegates/presentation/customer/profile/widgets/edit_profile_header_widget.dart';
+import 'package:salegates/presentation/customer/profile/edit%20profile/widgets/edit_profile_header_widget.dart';
 
 class EditProfileScreen extends StatefulWidget {
   const EditProfileScreen({super.key});

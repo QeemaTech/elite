@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:salegates/core/widgets/appbar_row_widge_with_Title.dart';
 
-class AppbarWithWidgetWidget extends StatelessWidget {
-  const AppbarWithWidgetWidget({super.key, this.title});
+class AppbarWithTitleWidget extends StatelessWidget {
+  const AppbarWithTitleWidget({super.key, this.title});
   final title;
 
   @override

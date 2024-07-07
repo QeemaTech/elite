@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:salegates/presentation/customer/profile/edit_profile_screen.dart';
+import 'package:salegates/presentation/customer/profile/edit%20profile/edit_profile_screen.dart';
+import 'package:salegates/presentation/customer/profile/favourites/my_favourites_screen.dart';
+import 'package:salegates/presentation/customer/profile/my%20ads/my_ads_screen.dart';
 import 'package:salegates/presentation/customer/profile/widgets/profile_header_widget.dart';
 import 'package:salegates/presentation/customer/profile/widgets/profile_list_item.dart';
 
@@ -30,13 +32,25 @@ class ProfileScreen extends StatelessWidget {
                 SizedBox(
                   height: 30.h,
                 ),
-                const ProfileListItem(
-                    text: "اعلاناتي", icon: "assets/svgs/flag.svg"),
+                ProfileListItem(
+                    onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MyAdsScreen(),
+                        )),
+                    text: "اعلاناتي",
+                    icon: "assets/svgs/flag.svg"),
                 SizedBox(
                   height: 30.h,
                 ),
-                const ProfileListItem(
-                    text: "المفضلة", icon: "assets/svgs/fav_black.svg"),
+                ProfileListItem(
+                    onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MyFavouritsesScreen(),
+                        )),
+                    text: "المفضلة",
+                    icon: "assets/svgs/fav_black.svg"),
                 SizedBox(
                   height: 30.h,
                 ),
