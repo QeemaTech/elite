@@ -63,4 +63,22 @@ class AppTheme {
       decoration: TextDecoration.underline,
     );
   }
+
+  static TextStyle text13Weigh600Black() {
+    return TextStyle(
+      color: Color(0xFF030103),
+      fontSize: 14.sp,
+      fontWeight: FontWeight.w600,
+    );
+  }
+
+  static TextStyle text12grayWeight400() {
+    return TextStyle(
+      color: AppColors.borderColor,
+      fontSize: 12.sp,
+      fontFamily: 'Montserrat-Arabic',
+      fontWeight: FontWeight.w400,
+      height: 0.08,
+    );
+  }
 }
