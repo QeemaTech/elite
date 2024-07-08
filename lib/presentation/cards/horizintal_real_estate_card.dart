@@ -53,7 +53,7 @@ class HorizontalRealEstateCard extends StatelessWidget {
                       fit: BoxFit.contain,
                     ),
                     SizedBox(
-                      width: 4.w,
+                      width: 8.w,
                     ),
                     Text(
                       "4",
@@ -61,14 +61,14 @@ class HorizontalRealEstateCard extends StatelessWidget {
                           .copyWith(fontSize: 12.sp),
                     ),
                     SizedBox(
-                      width: 4.w,
+                      width: 8.w,
                     ),
                     SvgPicture.asset(
                       "assets/svgs/bathroom.svg",
                       fit: BoxFit.contain,
                     ),
                     SizedBox(
-                      width: 4.w,
+                      width: 8.w,
                     ),
                     Text(
                       "1",
@@ -76,14 +76,14 @@ class HorizontalRealEstateCard extends StatelessWidget {
                           .copyWith(fontSize: 12.sp),
                     ),
                     SizedBox(
-                      width: 4.w,
+                      width: 8.w,
                     ),
                     SvgPicture.asset(
                       "assets/svgs/salon.svg",
                       fit: BoxFit.contain,
                     ),
                     SizedBox(
-                      width: 4.w,
+                      width: 8.w,
                     ),
                     Text(
                       "5",

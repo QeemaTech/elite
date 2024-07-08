@@ -1,13 +1,13 @@
 import 'package:another_carousel_pro/another_carousel_pro.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:salegates/core/theme/colors.dart';
 import 'package:salegates/core/theme/theme.dart';
+import 'package:salegates/core/widgets/slider_widget.dart';
 import 'package:salegates/presentation/cards/category_card_widget.dart';
 import 'package:salegates/presentation/cards/horizintal_real_estate_card.dart';
+import 'package:salegates/presentation/customer/categories/real_estate/real_estate_screen.dart';
 import 'package:salegates/presentation/customer/home/widgets/search_bar_widget.dart';
 import 'package:salegates/presentation/customer/home/widgets/story_widget.dart';
 import 'package:salegates/presentation/cards/vertical_real_estate_card.dart';
@@ -201,37 +201,7 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                   SizedBox(
                     height: 20.h,
                   ),
-                  Container(
-                    height: 150.h,
-                    width: double.infinity,
-                    decoration:
-                        BoxDecoration(borderRadius: BorderRadius.circular(8.r)),
-                    child: AnotherCarousel(
-                      dotSize: 5.h,
-                      dotIncreaseSize: 2.h,
-                      dotBgColor: Colors.transparent,
-                      autoplayDuration: Duration(seconds: 4),
-                      dotIncreasedColor: AppColors.primary,
-                      images: [
-                        Image.asset(
-                          "assets/images/banner.png",
-                          fit: BoxFit.cover,
-                        ),
-                        Image.asset(
-                          "assets/images/banner.png",
-                          fit: BoxFit.cover,
-                        ),
-                        Image.asset(
-                          "assets/images/banner.png",
-                          fit: BoxFit.cover,
-                        ),
-                        Image.asset(
-                          "assets/images/banner.png",
-                          fit: BoxFit.cover,
-                        ),
-                      ],
-                    ),
-                  ),
+                  SliderWidget(),
                   SizedBox(
                     height: 20.h,
                   ),
@@ -245,10 +215,23 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                       shrinkWrap: true,
                       itemCount: expand ? widget.itemcount2 : widget.itemcount1,
                       itemBuilder: (context, index) {
-                        return CategoryCardWidget(
-                          image: categoryItems[index]["image"]!,
-                          title: categoryItems[index]["title"]!,
-                          key: ValueKey(categoryItems[index]["id"]),
+                        return GestureDetector(
+                          onTap: () {
+                            switch (categoryItems[index]["category_id"]) {
+                              case "1":
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            RealEstateScreen()));
+                                break;
+                            }
+                          },
+                          child: CategoryCardWidget(
+                            image: categoryItems[index]["image"]!,
+                            title: categoryItems[index]["title"]!,
+                            key: ValueKey(categoryItems[index]["id"]),
+                          ),
                         );
                       }),
                   SizedBox(

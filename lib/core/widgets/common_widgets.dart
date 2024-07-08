@@ -24,7 +24,7 @@ Widget AppButton({
   );
 }
 
-AppBarOTPWidget({
+Widget AppBarOTPWidget({
   required String title,
   bool showBack = true,
   bool showNotifications = true,
@@ -62,6 +62,26 @@ AppBarOTPWidget({
           : SizedBox(
               width: 40.h,
             ),
+    ],
+  );
+}
+
+Widget TextWithAll(
+    {required String text, required VoidCallback onTap, Color? allColor}) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Text(
+        text,
+        style: AppTheme.text18BlackWeight700(),
+      ),
+      GestureDetector(
+        onTap: () {},
+        child: Text("عرض الكل",
+            style: allColor != null
+                ? AppTheme.textBodyprimaryWeight700().copyWith(color: allColor)
+                : AppTheme.textBodyprimaryWeight700()),
+      ),
     ],
   );
 }

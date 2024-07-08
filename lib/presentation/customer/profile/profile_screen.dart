@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:salegates/presentation/customer/profile/contact%20us/contact_screen.dart';
 import 'package:salegates/presentation/customer/profile/edit%20profile/edit_profile_screen.dart';
 import 'package:salegates/presentation/customer/profile/favourites/my_favourites_screen.dart';
 import 'package:salegates/presentation/customer/profile/my%20ads/my_ads_screen.dart';
@@ -59,8 +60,14 @@ class ProfileScreen extends StatelessWidget {
                 SizedBox(
                   height: 30.h,
                 ),
-                const ProfileListItem(
-                    text: "تواصل معنا", icon: "assets/svgs/phone.svg"),
+                ProfileListItem(
+                    onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ContactUsScreen(),
+                        )),
+                    text: "تواصل معنا",
+                    icon: "assets/svgs/phone.svg"),
                 SizedBox(
                   height: 30.h,
                 ),
