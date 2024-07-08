@@ -5,8 +5,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:salegates/core/theme/theme.dart';
 
 class VerticalRealEstateCard extends StatelessWidget {
-  const VerticalRealEstateCard({super.key, required this.edit, this.image});
-  final bool edit;
+  const VerticalRealEstateCard({super.key, this.edit = false, this.image});
+  final bool? edit;
   final String? image;
 
   @override
@@ -99,7 +99,7 @@ class VerticalRealEstateCard extends StatelessWidget {
               ],
             ),
             Spacer(),
-            edit
+            edit!
                 ? GestureDetector(
                     onTap: () {},
                     child: SvgPicture.asset("assets/svgs/more.svg"),

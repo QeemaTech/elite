@@ -24,6 +24,26 @@ Widget AppButton({
   );
 }
 
+Widget AppButtonWithBorder(
+    {required VoidCallback onPressed, required String text, double? height}) {
+  return MaterialButton(
+    onPressed: onPressed,
+    height: height ?? 60.h,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(5.r),
+      side: BorderSide(color: AppColors.primary),
+    ),
+    padding: EdgeInsets.symmetric(horizontal: 20.w),
+    minWidth: double.infinity,
+    //color: AppColors.primary,
+    child: Text(
+      text,
+      style: AppTheme.textButton18WiteWeight600()
+          .copyWith(color: AppColors.primary, fontWeight: FontWeight.w500),
+    ),
+  );
+}
+
 Widget AppBarOTPWidget({
   required String title,
   bool showBack = true,
@@ -67,7 +87,10 @@ Widget AppBarOTPWidget({
 }
 
 Widget TextWithAll(
-    {required String text, required VoidCallback onTap, Color? allColor}) {
+    {required String text,
+    required VoidCallback onTap,
+    Color? allColor,
+    String? allText}) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -77,7 +100,7 @@ Widget TextWithAll(
       ),
       GestureDetector(
         onTap: () {},
-        child: Text("عرض الكل",
+        child: Text(allText ?? "عرض الكل",
             style: allColor != null
                 ? AppTheme.textBodyprimaryWeight700().copyWith(color: allColor)
                 : AppTheme.textBodyprimaryWeight700()),

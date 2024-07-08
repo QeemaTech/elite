@@ -81,4 +81,19 @@ class AppTheme {
       height: 0.08,
     );
   }
+
+  static TextStyle text12grayWeight500() {
+    return TextStyle(
+      color: AppColors.textBodyGray,
+      fontSize: 12.sp,
+      fontWeight: FontWeight.w500,
+    );
+  }
+
+  static TextStyle textHeading15BlackWeight600() {
+    return TextStyle(
+      fontSize: 15.sp,
+      fontWeight: FontWeight.w600,
+    );
+  }
 }

@@ -23,14 +23,15 @@ class _DropDownFilterState extends State<DropDownFilter> {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.r),
           color: AppColors.primaryLight,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 1,
-              blurRadius: 1,
-              offset: Offset(0, 3), // changes position of shadow
-            ),
-          ],
+          border: Border.all(color: AppColors.primary),
+          // boxShadow: [
+          //   BoxShadow(
+          //     color: Colors.grey.withOpacity(0.8),
+          //     spreadRadius: 1,
+          //     blurRadius: 1,
+          //     offset: Offset(0, 1), // changes position of shadow
+          //   ),
+          // ],
         ),
         child: DropdownButton(
           onChanged: (value) => setState(() {

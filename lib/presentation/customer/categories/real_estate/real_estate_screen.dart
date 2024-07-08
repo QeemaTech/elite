@@ -102,7 +102,7 @@ class RealEstateScreen extends StatelessWidget {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            RealEstateSubcategoryScreen(
+                                            RealEstateSubcategoryWithAdsScreen(
                                               filterValue: subCategories[index]
                                                   ["title"]!,
                                             )));

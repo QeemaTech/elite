@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:salegates/core/theme/colors.dart';
-import 'package:salegates/core/theme/theme.dart';
+
 import 'package:salegates/core/widgets/appbar_with_title_widget.dart';
+import 'package:salegates/core/widgets/common_widgets.dart';
+import 'package:salegates/presentation/cards/vertical_real_estate_card.dart';
+import 'package:salegates/presentation/customer/categories/real_estate/real_estate_ad_screen.dart';
 import 'package:salegates/presentation/customer/categories/real_estate/widgets/filter_drop_down.dart';
 
-class RealEstateSubcategoryScreen extends StatefulWidget {
-  const RealEstateSubcategoryScreen({super.key, required this.filterValue});
+class RealEstateSubcategoryWithAdsScreen extends StatefulWidget {
+  const RealEstateSubcategoryWithAdsScreen(
+      {super.key, required this.filterValue});
   final String filterValue;
 
   @override
-  State<RealEstateSubcategoryScreen> createState() =>
-      _RealEstateSubcategoryScreenState();
+  State<RealEstateSubcategoryWithAdsScreen> createState() =>
+      _RealEstateSubcategoryWithAdsScreenState();
 }
 
-class _RealEstateSubcategoryScreenState
-    extends State<RealEstateSubcategoryScreen> {
+class _RealEstateSubcategoryWithAdsScreenState
+    extends State<RealEstateSubcategoryWithAdsScreen> {
   final allfilters = [
     {"name": "الكل", "value": "الكل"},
     {"name": "مفروش", "value": "مفروش"},
@@ -92,6 +95,41 @@ class _RealEstateSubcategoryScreenState
   String roomFilterSelectedValue = "غرف";
   String typeFilterSelectedValue = "سكني";
 
+  final items = [
+    {
+      "category": "1",
+      "image": "assets/images/real_estate.png",
+    },
+    {
+      "category": "1",
+      "image": "assets/images/home.png",
+    },
+    {
+      "category": "1",
+      "image": "assets/images/comm_ad1.png",
+    },
+    {
+      "category": "1",
+      "image": "assets/images/village.png",
+    },
+    {
+      "category": "2",
+      "image": "assets/images/banner.png",
+    },
+    {
+      "category": "1",
+      "image": "assets/images/house.png",
+    },
+    {
+      "category": "1",
+      "image": "assets/images/village.png",
+    },
+    {
+      "category": "1",
+      "image": "assets/images/home.png",
+    },
+  ];
+
   @override
   void initState() {
     // TODO: implement initState
@@ -111,7 +149,7 @@ class _RealEstateSubcategoryScreenState
                   child: Column(
                     children: [
                       SizedBox(
-                        height: 52.h,
+                        height: 45.h,
                         child: ListView(
                           scrollDirection: Axis.horizontal,
                           children: [
@@ -150,6 +188,51 @@ class _RealEstateSubcategoryScreenState
                           ],
                         ),
                       ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      TextWithAll(text: "كل الإعلانات", onTap: () {}),
+                      ListView.builder(
+                          itemCount: items.length,
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemBuilder: (context, index) {
+                            if (items[index]["category"] == "1") {
+                              return Padding(
+                                padding: EdgeInsets.all(5.0.h),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            RealEstateAdScreen(),
+                                      ),
+                                    );
+                                  },
+                                  child: VerticalRealEstateCard(
+                                    image: items[index]["image"],
+                                  ),
+                                ),
+                              );
+                            } else {
+                              return Padding(
+                                padding: EdgeInsets.all(5.0.h),
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 120.h,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(10.r),
+                                    child: Image.asset(
+                                      items[index]["image"]!,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            }
+                          })
                     ],
                   ),
                 )),
