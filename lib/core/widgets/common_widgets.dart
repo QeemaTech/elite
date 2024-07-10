@@ -7,10 +7,11 @@ import 'package:salegates/core/theme/theme.dart';
 Widget AppButton({
   required VoidCallback onPressed,
   required String text,
+  double? height,
 }) {
   return MaterialButton(
     onPressed: onPressed,
-    height: 60.h,
+    height: height ?? 60.h,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(8.r),
     ),
@@ -25,21 +26,27 @@ Widget AppButton({
 }
 
 Widget AppButtonWithBorder(
-    {required VoidCallback onPressed, required String text, double? height}) {
+    {required VoidCallback onPressed,
+    required String text,
+    double? height,
+    Color? borderColor,
+    Color? textColor,
+    Color? backgroundColor}) {
   return MaterialButton(
     onPressed: onPressed,
     height: height ?? 60.h,
+    color: backgroundColor ?? Colors.white,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(5.r),
-      side: BorderSide(color: AppColors.primary),
+      side: BorderSide(color: borderColor ?? AppColors.primary),
     ),
     padding: EdgeInsets.symmetric(horizontal: 20.w),
     minWidth: double.infinity,
     //color: AppColors.primary,
     child: Text(
       text,
-      style: AppTheme.textButton18WiteWeight600()
-          .copyWith(color: AppColors.primary, fontWeight: FontWeight.w500),
+      style: AppTheme.textButton18WiteWeight600().copyWith(
+          color: textColor ?? AppColors.primary, fontWeight: FontWeight.w500),
     ),
   );
 }

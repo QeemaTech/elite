@@ -27,20 +27,21 @@ class CategoryCardWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Expanded(
-                flex: 5,
+                flex: 7,
                 child: Image.asset(
                   image,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                 ),
               ),
               Expanded(
-                flex: 2,
+                flex: 4,
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: Text(
                     title,
+                    textAlign: TextAlign.center,
                     style: AppTheme.text18BlackWeight700()
-                        .copyWith(fontSize: 13.sp, fontWeight: FontWeight.w800),
+                        .copyWith(fontSize: 11.sp, fontWeight: FontWeight.w800),
                   ),
                 ),
               )

@@ -12,7 +12,11 @@ import 'package:salegates/presentation/customer/categories/real_estate/widgets/c
 import 'package:salegates/presentation/customer/categories/real_estate/widgets/real_estate_spes_widget.dart';
 
 class RealEstateAdScreen extends StatefulWidget {
-  const RealEstateAdScreen({super.key});
+  RealEstateAdScreen({
+    super.key,
+    this.isEdit = false,
+  });
+  final bool isEdit;
 
   @override
   State<RealEstateAdScreen> createState() => _RealEstateAdScreenState();
@@ -191,37 +195,161 @@ class _RealEstateAdScreenState extends State<RealEstateAdScreen> {
           )
         ],
       ),
-      bottomNavigationBar: Container(
-        height: 60.h,
-        child: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              ContactButtonWidget(
-                icon: "assets/svgs/phone.svg",
-                text: "اتصال",
-                backgroundColor: AppColors.primary,
-                onPressed: () {},
+      bottomNavigationBar: widget.isEdit
+          ? Container(
+              height: 60.h,
+              child: Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    ContactButtonWidget(
+                      icon: "assets/svgs/editpin.svg",
+                      iconColor: Colors.white,
+                      text: "تعديل",
+                      backgroundColor: AppColors.primary,
+                      width: 160.w,
+                      onPressed: () {},
+                    ),
+                    SizedBox(width: 10.w),
+                    ContactButtonWidget(
+                      icon: "assets/svgs/delete2.svg",
+                      iconColor: Colors.red,
+                      text: "حذف",
+                      textColor: Colors.red,
+                      borderColor: Colors.red,
+                      width: 160.w,
+                      onPressed: () {
+                        showModalBottomSheet(
+                            context: context,
+                            isScrollControlled: true,
+                            builder: (context) {
+                              return DeleteAdBottomSheet();
+                            });
+                      },
+                      backgroundColor: Colors.white,
+                    ),
+                  ],
+                ),
               ),
-              SizedBox(width: 10.w),
-              ContactButtonWidget(
-                icon: "assets/svgs/massenger.svg",
-                text: "دردشة",
-                onPressed: () {},
-                backgroundColor: AppColors.blueMessenger,
+            )
+          : Container(
+              height: 60.h,
+              child: Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    ContactButtonWidget(
+                      icon: "assets/svgs/phone.svg",
+                      text: "اتصال",
+                      backgroundColor: AppColors.primary,
+                      onPressed: () {},
+                    ),
+                    SizedBox(width: 10.w),
+                    ContactButtonWidget(
+                      icon: "assets/svgs/massenger.svg",
+                      text: "دردشة",
+                      onPressed: () {},
+                      backgroundColor: AppColors.blueMessenger,
+                    ),
+                    SizedBox(width: 10.w),
+                    ContactButtonWidget(
+                      icon: "assets/svgs/whatsapp.svg",
+                      text: "واتس اب",
+                      onPressed: () {},
+                      backgroundColor: AppColors.greenWhatsapp,
+                    ),
+                  ],
+                ),
               ),
-              SizedBox(width: 10.w),
-              ContactButtonWidget(
-                icon: "assets/svgs/whatsapp.svg",
-                text: "واتس اب",
-                onPressed: () {},
-                backgroundColor: AppColors.greenWhatsapp,
-              ),
-            ],
-          ),
-        ),
-      ),
+            ),
     );
+  }
+
+  Widget DeleteAdBottomSheet() {
+    return Container(
+        height: 600.h,
+        width: double.infinity,
+        child: Padding(
+          padding: EdgeInsets.all(20.0.h),
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+            SizedBox(
+              height: 30.h,
+            ),
+            SvgPicture.asset(
+              "assets/svgs/delete2.svg",
+              height: 130.h,
+              fit: BoxFit.cover,
+            ),
+            SizedBox(
+              height: 20.h,
+            ),
+            Text(
+              "اذكر سبب الحذف",
+              style: AppTheme.text18BlackWeight700(),
+            ),
+            SizedBox(
+              height: 10.h,
+            ),
+            Text(
+              'سوف يتم تحويلك الي صفحة الاعلانات الخاص بك لادارتها ',
+              textAlign: TextAlign.center,
+              style: AppTheme.text12grayWeight500(),
+            ),
+            SizedBox(
+              height: 20.h,
+            ),
+            AppButton(onPressed: () {}, text: "تم البيع", height: 50.h),
+            SizedBox(
+              height: 10.h,
+            ),
+            AppButtonWithBorder(
+                onPressed: () {},
+                text: "تم الايجار",
+                height: 50.h,
+                backgroundColor: AppColors.primaryLight),
+            SizedBox(
+              height: 10.h,
+            ),
+            AppButtonWithBorder(
+                onPressed: () {},
+                text: "سبب اخر",
+                height: 50.h,
+                backgroundColor: AppColors.primaryLight),
+            SizedBox(
+              height: 20.h,
+            ),
+            SizedBox(
+              height: 60.h,
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: AppButton(
+                      onPressed: () {},
+                      text: "حسنا",
+                      height: 50.h,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10.w,
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: AppButtonWithBorder(
+                      onPressed: () {},
+                      text: "الغاء",
+                      height: 50.h,
+                      borderColor: Colors.red,
+                      textColor: Colors.red,
+                    ),
+                  ),
+                ],
+              ),
+            )
+          ]),
+        ));
   }
 }

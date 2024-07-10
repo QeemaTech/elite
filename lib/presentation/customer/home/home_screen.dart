@@ -50,28 +50,28 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
       "title": "قسم الإلكترونيات"
     },
     {
-      "image": "assets/images/house.png",
+      "image": "assets/images/clothes.png",
       "id": "4",
-      "category_id": "1",
-      "title": "قسم العقارات"
+      "category_id": "4",
+      "title": "قسم الازياء"
     },
     {
-      "image": "assets/images/car.png",
+      "image": "assets/images/chair.png",
       "id": "5",
-      "category_id": "2",
-      "title": "قسم السيارات"
+      "category_id": "5",
+      "title": "قسم الاثاث"
     },
     {
-      "image": "assets/images/lab.png",
+      "image": "assets/images/jobs.png",
       "id": "6",
-      "category_id": "3",
-      "title": "قسم الإلكترونيات"
+      "category_id": "6",
+      "title": "قسم الوظائف"
     },
     {
-      "image": "assets/images/house.png",
+      "image": "assets/images/bird.png",
       "id": "7",
-      "category_id": "1",
-      "title": "قسم العقارات"
+      "category_id": "7",
+      "title": "قسم الحيوانات والطيور"
     },
     {
       "image": "assets/images/car.png",

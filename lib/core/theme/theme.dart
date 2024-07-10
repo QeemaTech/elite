@@ -96,4 +96,14 @@ class AppTheme {
       fontWeight: FontWeight.w600,
     );
   }
+
+  static InputBorder dropDownBorder() {
+    return OutlineInputBorder(
+      borderRadius: BorderRadius.circular(10),
+      borderSide: BorderSide(
+        color: AppColors.borderColor,
+        width: 1.5.w,
+      ),
+    );
+  }
 }

@@ -41,6 +41,7 @@ dependencies:
   text_scroll: ^0.2.0
   another_carousel_pro: ^1.0.2
   flutter_slidable: ^3.1.0
+  toggle_switch: ^2.3.0
 
 dev_dependencies:
   flutter_lints: ^3.0.0

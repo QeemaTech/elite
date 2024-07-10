@@ -7,14 +7,14 @@ import 'package:salegates/core/theme/theme.dart';
 class AuthTextEditing extends StatelessWidget {
   AuthTextEditing({
     super.key,
-    required this.hintText,
+    this.hintText,
     this.keyboardType = TextInputType.text,
     this.suffixIcon = const SizedBox.shrink(),
     this.readOnly = false,
     this.backgroundColor,
     this.hintTextColor,
   });
-  final String hintText;
+  final String? hintText;
   TextInputType keyboardType;
   Widget suffixIcon;
   bool readOnly;

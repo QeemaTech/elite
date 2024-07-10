@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:salegates/core/theme/theme.dart';
+import 'package:salegates/presentation/customer/categories/real_estate/real_estate_ad_screen.dart';
 
 class VerticalRealEstateCard extends StatelessWidget {
   const VerticalRealEstateCard({super.key, this.edit = false, this.image});

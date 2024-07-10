@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:salegates/core/theme/colors.dart';
+import 'package:salegates/presentation/add%20Ads/category_list_screen.dart';
 import 'package:salegates/presentation/chat/chat_list_screen.dart';
 import 'package:salegates/presentation/customer/bills/bills_screen.dart';
 import 'package:salegates/presentation/customer/home/home_screen.dart';
@@ -31,7 +32,11 @@ class _CustomerNavigationScreenState extends State<CustomerNavigationScreen> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         shape: CircleBorder(),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return CategoryListScreen();
+          }));
+        },
         backgroundColor: AppColors.primary,
         child: const Icon(
           Icons.add,

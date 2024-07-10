@@ -9,12 +9,20 @@ class ContactButtonWidget extends StatelessWidget {
       {super.key,
       required this.text,
       required this.icon,
+      this.iconColor,
       this.onPressed,
+      this.textColor,
+      this.borderColor,
+      this.width,
       required this.backgroundColor});
   final String text;
   final String icon;
   final Color backgroundColor;
+  final Color? iconColor;
   final VoidCallback? onPressed;
+  final Color? textColor;
+  final Color? borderColor;
+  final double? width;
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +30,11 @@ class ContactButtonWidget extends StatelessWidget {
       onTap: onPressed,
       child: Container(
         height: 50.h,
-        width: 100.w,
+        width: width ?? 100.w,
         decoration: BoxDecoration(
           color: backgroundColor,
           borderRadius: BorderRadius.circular(8.r),
+          border: Border.all(color: borderColor ?? AppColors.primary),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -33,13 +42,14 @@ class ContactButtonWidget extends StatelessWidget {
             SvgPicture.asset(
               icon,
               height: 20.h,
-              color: Colors.white,
+              color: iconColor ?? Colors.white,
             ),
             SizedBox(width: 10.w),
             Text(
               text,
-              style: AppTheme.text13Weigh600Black()
-                  .copyWith(color: Colors.white, fontWeight: FontWeight.w500),
+              style: AppTheme.text13Weigh600Black().copyWith(
+                  color: textColor ?? Colors.white,
+                  fontWeight: FontWeight.w500),
             ),
           ],
         ),
