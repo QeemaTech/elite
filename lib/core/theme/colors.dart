@@ -13,7 +13,7 @@ class AppColors {
   static const Color primaryLight = Color(0xffF2E9E9);
   static const Color textOrangeColor = Color(0xffF66957);
   static const Color textBodyGray = Color(0xff707070);
-
+  static const Color orangeColor = Color(0xffFFA828);
   static const Color blueMessenger = Color(0xFF1962BC);
   static const Color greenWhatsapp = Color(0xFF5EB660);
 }

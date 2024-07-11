@@ -13,6 +13,8 @@ class AuthTextEditing extends StatelessWidget {
     this.readOnly = false,
     this.backgroundColor,
     this.hintTextColor,
+    this.maxLength,
+    this.maxLines,
   });
   final String? hintText;
   TextInputType keyboardType;
@@ -20,6 +22,8 @@ class AuthTextEditing extends StatelessWidget {
   bool readOnly;
   Color? backgroundColor;
   Color? hintTextColor;
+  int? maxLines;
+  int? maxLength;
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +40,8 @@ class AuthTextEditing extends StatelessWidget {
       child: TextField(
         readOnly: readOnly,
         keyboardType: keyboardType,
+        maxLength: maxLength,
+        maxLines: maxLines,
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: hintText,

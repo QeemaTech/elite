@@ -4,9 +4,11 @@ import 'package:salegates/core/theme/theme.dart';
 import 'package:salegates/core/widgets/common_widgets.dart';
 import 'package:salegates/presentation/auth/widgets/pin_code.dart';
 import 'package:salegates/presentation/customer/navigation%20bar/navigation_screen.dart';
+import 'package:salegates/presentation/vendor/choose_section_screen.dart';
 
 class OTPScreen extends StatefulWidget {
-  const OTPScreen({super.key});
+  const OTPScreen({super.key, required this.selectedOption});
+  final int selectedOption;
 
   @override
   State<OTPScreen> createState() => _OTPScreenState();
@@ -80,12 +82,18 @@ class _OTPScreenState extends State<OTPScreen> {
               ),
               AppButton(
                   onPressed: () {
-                    Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                const CustomerNavigationScreen()),
-                        (route) => false);
+                    widget.selectedOption == 1
+                        ? Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const CustomerNavigationScreen()),
+                            (route) => false)
+                        : Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ChooseSectionScreen()),
+                            (route) => false);
                   },
                   text: "التالي")
             ],

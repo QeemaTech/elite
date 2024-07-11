@@ -195,6 +195,54 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
+                        'وصف الشركة',
+                        style: AppTheme.text18BlackWeight700()
+                            .copyWith(fontSize: 15.sp),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      AuthTextEditing(
+                        hintText: "ادخل وصف الشركة",
+                        keyboardType: TextInputType.text,
+                        readOnly: true,
+                        maxLength: 250,
+                        maxLines: 5,
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                    ],
+                  )),
+              Visibility(
+                  visible: selectedOption == 2,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'الموقع الالكتروني للشركة',
+                        style: AppTheme.text18BlackWeight700()
+                            .copyWith(fontSize: 15.sp),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      AuthTextEditing(
+                        hintText: "ادخل الموقع الالكتروني للشركة",
+                        keyboardType: TextInputType.text,
+                        readOnly: true,
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                    ],
+                  )),
+              Visibility(
+                  visible: selectedOption == 2,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
                         'ملف الشركة',
                         style: AppTheme.text18BlackWeight700()
                             .copyWith(fontSize: 15.sp),
@@ -263,6 +311,98 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                     ],
                   )),
+              Visibility(
+                  visible: selectedOption == 2,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'رابط الفيس بوك',
+                        style: AppTheme.text18BlackWeight700()
+                            .copyWith(fontSize: 15.sp),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      AuthTextEditing(
+                        hintText: "ادخل رابط الفيس بوك",
+                        keyboardType: TextInputType.text,
+                        readOnly: true,
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                    ],
+                  )),
+              Visibility(
+                  visible: selectedOption == 2,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'رابط تويتر / اكس',
+                        style: AppTheme.text18BlackWeight700()
+                            .copyWith(fontSize: 15.sp),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      AuthTextEditing(
+                        hintText: "ادخل رابط تويتر / اكس",
+                        keyboardType: TextInputType.text,
+                        readOnly: true,
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                    ],
+                  )),
+              Visibility(
+                  visible: selectedOption == 2,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'رابط انستجرام',
+                        style: AppTheme.text18BlackWeight700()
+                            .copyWith(fontSize: 15.sp),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      AuthTextEditing(
+                        hintText: "ادخل رابط انستجرام ",
+                        keyboardType: TextInputType.text,
+                        readOnly: true,
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                    ],
+                  )),
+              Visibility(
+                  visible: selectedOption == 2,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'رابط سناب شات',
+                        style: AppTheme.text18BlackWeight700()
+                            .copyWith(fontSize: 15.sp),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      AuthTextEditing(
+                        hintText: "ادخل رابط سناب شات ",
+                        keyboardType: TextInputType.text,
+                        readOnly: true,
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                    ],
+                  )),
               Row(
                 children: [
                   Radio<bool>(
@@ -316,8 +456,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               AppButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => OTPScreen()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => OTPScreen(
+                                selectedOption: selectedOption,
+                              )));
                 },
                 text: "تسجيل الدخول",
               ),

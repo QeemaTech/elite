@@ -10,6 +10,7 @@ import 'package:salegates/presentation/cards/ad_company_card_with_rate.dart';
 import 'package:salegates/presentation/cards/vertical_real_estate_card.dart';
 import 'package:salegates/presentation/customer/categories/real_estate/widgets/contact_button_widget.dart';
 import 'package:salegates/presentation/customer/categories/real_estate/widgets/real_estate_spes_widget.dart';
+import 'package:salegates/presentation/vendor/boutique_screen.dart';
 
 class RealEstateAdScreen extends StatefulWidget {
   RealEstateAdScreen({
@@ -172,7 +173,16 @@ class _RealEstateAdScreenState extends State<RealEstateAdScreen> {
                     SizedBox(
                       height: 20.h,
                     ),
-                    const AdCompanyCardWithRate(),
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => BoutiqueScreen(
+                                        isCustomer: true,
+                                      )));
+                        },
+                        child: const AdCompanyCardWithRate()),
                     SizedBox(
                       height: 20.h,
                     ),

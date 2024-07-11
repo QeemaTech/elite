@@ -3,8 +3,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:salegates/core/widgets/appbar_row_widge_with_Title.dart';
 
 class AppbarWithTitleWidget extends StatelessWidget {
-  const AppbarWithTitleWidget({super.key, this.title});
+  const AppbarWithTitleWidget(
+      {super.key,
+      this.title,
+      this.removeSearchIcon = false,
+      this.isBack = true,
+      this.isVendor = false});
   final title;
+  final bool? removeSearchIcon;
+  final bool? isBack;
+  final bool? isVendor;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +33,9 @@ class AppbarWithTitleWidget extends StatelessWidget {
           ),
           AppBarRowWithTitle(
             title: title,
+            removeSearchIcon: removeSearchIcon,
+            isVendor: isVendor,
+            isBack: isBack,
           ),
         ],
       ),

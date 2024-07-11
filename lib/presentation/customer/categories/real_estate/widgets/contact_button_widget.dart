@@ -14,6 +14,7 @@ class ContactButtonWidget extends StatelessWidget {
       this.textColor,
       this.borderColor,
       this.width,
+      this.height,
       required this.backgroundColor});
   final String text;
   final String icon;
@@ -23,13 +24,14 @@ class ContactButtonWidget extends StatelessWidget {
   final Color? textColor;
   final Color? borderColor;
   final double? width;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onPressed,
       child: Container(
-        height: 50.h,
+        height: height ?? 50.h,
         width: width ?? 100.w,
         decoration: BoxDecoration(
           color: backgroundColor,
