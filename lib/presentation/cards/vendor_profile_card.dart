@@ -5,7 +5,7 @@ import 'package:salegates/core/theme/colors.dart';
 import 'package:salegates/core/theme/theme.dart';
 
 class VendorProfileCard extends StatelessWidget {
-  const VendorProfileCard({super.key, this.isCustomer});
+  const VendorProfileCard({super.key, this.isCustomer = false});
   final bool? isCustomer;
 
   @override

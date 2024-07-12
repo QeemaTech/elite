@@ -7,6 +7,7 @@ import 'package:salegates/core/widgets/appbar_with_title_widget.dart';
 import 'package:salegates/core/widgets/common_widgets.dart';
 import 'package:salegates/presentation/cards/category_card_widget.dart';
 import 'package:salegates/presentation/vendor/boutique_screen.dart';
+import 'package:salegates/presentation/vendor/car_category_vendor_screen.dart';
 
 class ChooseSectionScreen extends StatelessWidget {
   ChooseSectionScreen({super.key});
@@ -114,6 +115,13 @@ class ChooseSectionScreen extends StatelessWidget {
                         return GestureDetector(
                           onTap: () {
                             switch (categoryItems[index]["category_id"]) {
+                              case "2":
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            CarCategoryVendorScreen()));
+                                break;
                               case "8":
                                 Navigator.push(
                                     context,
