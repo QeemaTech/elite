@@ -18,8 +18,6 @@ class AppbarWithTitleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 140.h,
-      width: double.infinity,
-      padding: EdgeInsets.all(20.h),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.vertical(bottom: Radius.circular(20.r)),
           image: DecorationImage(

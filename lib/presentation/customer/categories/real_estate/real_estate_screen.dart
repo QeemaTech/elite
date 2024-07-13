@@ -9,6 +9,8 @@ import 'package:salegates/presentation/cards/category_card_widget.dart';
 import 'package:salegates/presentation/cards/horizintal_real_estate_card.dart';
 import 'package:salegates/presentation/customer/categories/real_estate/real_estate_subcategory_screen_with_ads.dart';
 
+import 'real_estate_ad_screen.dart';
+
 class RealEstateScreen extends StatelessWidget {
   RealEstateScreen({super.key});
   final subCategories = [
@@ -136,10 +138,21 @@ class RealEstateScreen extends StatelessWidget {
                           itemBuilder: (context, index) {
                             return Padding(
                               padding: EdgeInsets.all(5.0.h),
-                              child: CategoryCardWidget(
-                                  title: businessSubCategories[index]["title"]!,
-                                  image: businessSubCategories[index]
-                                      ["image"]!),
+                              child: InkWell(
+                                onTap: () => Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            RealEstateSubcategoryWithAdsScreen(
+                                              filterValue: subCategories[index]
+                                                  ["title"]!,
+                                            ))),
+                                child: CategoryCardWidget(
+                                    title: businessSubCategories[index]
+                                        ["title"]!,
+                                    image: businessSubCategories[index]
+                                        ["image"]!),
+                              ),
                             );
                           }),
                     ),
@@ -161,9 +174,16 @@ class RealEstateScreen extends StatelessWidget {
                           shrinkWrap: true,
                           itemCount: businessSubCategories.length,
                           itemBuilder: (context, index) {
-                            return Padding(
-                              padding: EdgeInsets.all(5.0.h),
-                              child: const HorizontalRealEstateCard(),
+                            return InkWell(
+                              onTap: () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          RealEstateAdScreen())),
+                              child: Padding(
+                                padding: EdgeInsets.all(5.0.h),
+                                child: const HorizontalRealEstateCard(),
+                              ),
                             );
                           }),
                     ),

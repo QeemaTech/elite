@@ -12,14 +12,14 @@ class PinCarCardVendor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 190.h,
+      height: 200.h,
       child: Card(
         surfaceTintColor: Colors.white,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              height: 110.h,
+              height: 100.h,
               width: double.infinity,
               child: Stack(
                 children: [

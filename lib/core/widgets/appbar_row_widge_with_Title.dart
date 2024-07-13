@@ -50,7 +50,8 @@ class AppBarRowWithTitle extends StatelessWidget {
                       ),
                     ),
                   )
-            : SizedBox(),
+            : const SizedBox(),
+        const SizedBox(),
         Text(
           title,
           style: AppTheme.textBodyWhite15Weight700().copyWith(fontSize: 18.sp),
@@ -58,7 +59,7 @@ class AppBarRowWithTitle extends StatelessWidget {
         Row(
           children: [
             removeSearchIcon!
-                ? SizedBox()
+                ? const SizedBox()
                 : Container(
                     height: 40.h,
                     width: 40.h,

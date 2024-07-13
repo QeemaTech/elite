@@ -109,7 +109,7 @@ class AddGeneralAdScreen extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: Padding(
-        padding: EdgeInsets.all(10.0.h),
+        padding: EdgeInsets.all(20.0.h),
         child: AppButton(
             onPressed: () {
               showDialog(

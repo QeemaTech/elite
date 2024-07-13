@@ -96,33 +96,33 @@ class AddRealEstateAd extends StatelessWidget {
                     SizedBox(
                       height: 10.h,
                     ),
-                    Text(
-                      "طريقة العرض",
-                      style: AppTheme.textHeading15BlackWeight600(),
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    Center(
-                      child: ToggleSwitch(
-                        minWidth: 170.0,
-                        initialLabelIndex: 1,
-                        cornerRadius: 5.0.h,
-                        activeFgColor: Colors.white,
-                        inactiveBgColor: Colors.white,
-                        inactiveFgColor: Colors.black,
-                        radiusStyle: true,
-                        totalSwitches: 2,
-                        labels: ['ايجار', 'بيع'],
-                        activeBgColors: [
-                          [AppColors.primary],
-                          [AppColors.primary]
-                        ],
-                        onToggle: (index) {
-                          print('switched to: $index');
-                        },
-                      ),
-                    ),
+                    // Text(
+                    //   "طريقة العرض",
+                    //   style: AppTheme.textHeading15BlackWeight600(),
+                    // ),
+                    // SizedBox(
+                    //   height: 10.h,
+                    // ),
+                    // Center(
+                    //   child: ToggleSwitch(
+                    //     minWidth: 170.0,
+                    //     initialLabelIndex: 1,
+                    //     cornerRadius: 5.0.h,
+                    //     activeFgColor: Colors.white,
+                    //     inactiveBgColor: Colors.white,
+                    //     inactiveFgColor: Colors.black,
+                    //     radiusStyle: true,
+                    //     totalSwitches: 2,
+                    //     labels: ['ايجار', 'بيع'],
+                    //     activeBgColors: [
+                    //       [AppColors.primary],
+                    //       [AppColors.primary]
+                    //     ],
+                    //     onToggle: (index) {
+                    //       print('switched to: $index');
+                    //     },
+                    //   ),
+                    // ),
                     SizedBox(
                       height: 20.h,
                     ),
@@ -372,7 +372,7 @@ class _AddAdCheckBoxState extends State<AddAdCheckBox> {
     return Directionality(
       textDirection: TextDirection.ltr,
       child: SizedBox(
-        width: 125.w,
+        width: 130.w,
         child: ListTileTheme(
           child: CheckboxListTile(
               value: isSelected,
