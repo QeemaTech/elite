@@ -6,7 +6,7 @@ import 'package:salegates/core/theme/theme.dart';
 import 'package:salegates/presentation/chat/chat_list_screen.dart';
 import 'package:salegates/presentation/customer/profile/profile_screen.dart';
 
-class AppBarRowWithTitle extends StatelessWidget {
+class AppBarRowWithTitle extends StatefulWidget {
   const AppBarRowWithTitle(
       {super.key,
       this.title,
@@ -19,12 +19,19 @@ class AppBarRowWithTitle extends StatelessWidget {
   final bool? isBack;
 
   @override
+  State<AppBarRowWithTitle> createState() => _AppBarRowWithTitleState();
+}
+
+class _AppBarRowWithTitleState extends State<AppBarRowWithTitle> {
+  bool isClicked = false;
+
+  @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        isBack!
-            ? isVendor!
+        widget.isBack!
+            ? widget.isVendor!
                 ? GestureDetector(
                     onTap: () {
                       Navigator.push(
@@ -63,14 +70,14 @@ class AppBarRowWithTitle extends StatelessWidget {
             : const SizedBox(),
         const SizedBox(),
         Text(
-          title,
+          widget.title,
           style: AppTheme.textBodyWhite15Weight700().copyWith(fontSize: 18.sp),
         ),
         Row(
           children: [
-            removeSearchIcon!
+            widget.removeSearchIcon!
                 ? const SizedBox()
-                : isVendor!
+                : widget.isVendor!
                     ? GestureDetector(
                         onTap: () => Navigator.push(
                           context,
@@ -100,14 +107,30 @@ class AppBarRowWithTitle extends StatelessWidget {
             SizedBox(
               width: 5.w,
             ),
-            Container(
+            InkWell(
+              onTap: () => setState(() {
+                isClicked = !isClicked;
+              }),
+              child: Container(
                 height: 40.h,
                 width: 40.h,
                 padding: EdgeInsets.all(5.h),
-                child: SvgPicture.asset(
-                  "assets/svgs/ring.svg",
-                  color: Colors.white,
-                )),
+                child: isClicked
+                    ? Badge(
+                        smallSize: 12.h,
+                        alignment: Alignment.topLeft,
+                        padding: EdgeInsets.all(7.h),
+                        child: SvgPicture.asset(
+                          "assets/svgs/ring_fill.svg",
+                          color: Colors.black,
+                        ),
+                      )
+                    : SvgPicture.asset(
+                        "assets/svgs/ring.svg",
+                        color: Colors.white,
+                      ),
+              ),
+            )
           ],
         )
       ],
