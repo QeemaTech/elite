@@ -8,9 +8,11 @@ import 'package:salegates/core/widgets/appbar_with_title_widget.dart';
 import 'package:salegates/core/widgets/common_widgets.dart';
 import 'package:salegates/presentation/cards/ad_company_card_with_rate.dart';
 import 'package:salegates/presentation/cards/vertical_real_estate_card.dart';
+import 'package:salegates/presentation/chat/chat_screen.dart';
 import 'package:salegates/presentation/customer/categories/real_estate/widgets/contact_button_widget.dart';
 import 'package:salegates/presentation/customer/categories/real_estate/widgets/real_estate_spes_widget.dart';
 import 'package:salegates/presentation/vendor/boutique_screen.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class RealEstateAdScreen extends StatefulWidget {
   RealEstateAdScreen({
@@ -254,20 +256,29 @@ class _RealEstateAdScreenState extends State<RealEstateAdScreen> {
                       icon: "assets/svgs/phone.svg",
                       text: "اتصال",
                       backgroundColor: AppColors.primary,
-                      onPressed: () {},
+                      onPressed: () {
+                        launch("tel://1234567890");
+                      },
                     ),
                     SizedBox(width: 10.w),
                     ContactButtonWidget(
                       icon: "assets/svgs/massenger.svg",
                       text: "دردشة",
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const ChatPage()));
+                      },
                       backgroundColor: AppColors.blueMessenger,
                     ),
                     SizedBox(width: 10.w),
                     ContactButtonWidget(
                       icon: "assets/svgs/whatsapp.svg",
                       text: "واتس اب",
-                      onPressed: () {},
+                      onPressed: () {
+                        launch("https://wa.me/1234567890");
+                      },
                       backgroundColor: AppColors.greenWhatsapp,
                     ),
                   ],

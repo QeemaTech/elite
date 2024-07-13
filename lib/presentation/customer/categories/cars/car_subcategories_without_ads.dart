@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:salegates/core/widgets/appbar_with_title_widget.dart';
 import 'package:salegates/presentation/cards/category_card_widget.dart';
+import 'package:salegates/presentation/customer/categories/cars/car_ads_screen.dart';
 import 'package:salegates/presentation/customer/categories/cars/car_brand_type_screen.dart';
 
 class CarSubcategoriesWithoutAds extends StatelessWidget {
-  CarSubcategoriesWithoutAds({super.key});
+  CarSubcategoriesWithoutAds({super.key, this.addScreen = true});
+  final bool addScreen;
   final subCategories = [
     {
       "id": "1",
@@ -54,16 +56,24 @@ class CarSubcategoriesWithoutAds extends StatelessWidget {
                           return Padding(
                             padding: EdgeInsets.all(5.0.h),
                             child: GestureDetector(
-                              onTap: () {
-                                if (subCategories[index]["id"] == "1" ||
-                                    subCategories[index]["id"] == "2") {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              CarBrandScreen()));
-                                }
-                              },
+                              onTap: addScreen
+                                  ? () {
+                                      if (subCategories[index]["id"] == "1" ||
+                                          subCategories[index]["id"] == "2") {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    CarBrandScreen()));
+                                      }
+                                    }
+                                  : () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  CarAdsScreen()));
+                                    },
                               child: CategoryCardWidget(
                                   title: subCategories[index]["title"]!,
                                   image: subCategories[index]["image"]!),

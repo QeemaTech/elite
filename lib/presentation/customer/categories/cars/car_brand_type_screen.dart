@@ -4,7 +4,7 @@ import 'package:salegates/core/theme/colors.dart';
 import 'package:salegates/core/theme/theme.dart';
 import 'package:salegates/core/widgets/appbar_with_title_widget.dart';
 import 'package:salegates/core/widgets/common_widgets.dart';
-import 'package:salegates/presentation/add%20Ads/add_ad_general_screen.dart';
+import 'package:salegates/presentation/add%20Ads/add_car_ads_screen.dart';
 import 'package:salegates/presentation/cards/category_card_widget.dart';
 
 class CarBrandScreen extends StatefulWidget {
@@ -163,7 +163,7 @@ class _CarBrandScreenState extends State<CarBrandScreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => AddGeneralAdScreen()));
+                                  builder: (context) => AddCarAdsScreen()));
                         },
                         text: "التالي"),
                   ],

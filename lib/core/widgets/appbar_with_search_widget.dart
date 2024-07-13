@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:salegates/presentation/customer/home/widgets/search_bar_widget.dart';
 
 class AppbarWithSearchWidget extends StatelessWidget {
-  const AppbarWithSearchWidget({super.key});
+  const AppbarWithSearchWidget({super.key, this.showBack = false});
+  final bool showBack;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,9 @@ class AppbarWithSearchWidget extends StatelessWidget {
           SizedBox(
             height: 20.h,
           ),
-          SearchWithNotificationWidget(),
+          SearchWithNotificationWidget(
+            showBack: showBack,
+          ),
         ],
       ),
     );

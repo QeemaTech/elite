@@ -5,8 +5,15 @@ import 'package:flutter_svg/svg.dart';
 import 'package:salegates/core/theme/colors.dart';
 import 'package:salegates/core/theme/theme.dart';
 import 'package:salegates/core/widgets/slider_widget.dart';
+import 'package:salegates/presentation/auth/register_screen.dart';
 import 'package:salegates/presentation/cards/category_card_widget.dart';
 import 'package:salegates/presentation/cards/horizintal_real_estate_card.dart';
+import 'package:salegates/presentation/customer/categories/animals/animal_subcategories_without_ads.dart';
+import 'package:salegates/presentation/customer/categories/cars/car_subcategories_without_ads.dart';
+import 'package:salegates/presentation/customer/categories/clothes/clothes_subcategories_without_ads.dart';
+import 'package:salegates/presentation/customer/categories/electronics/electronics_subcategories_without_ads.dart';
+import 'package:salegates/presentation/customer/categories/furniture/furniture_subcategpries_without_ads.dart';
+import 'package:salegates/presentation/customer/categories/jobs/jobs_subcategories_without_ads.dart';
 import 'package:salegates/presentation/customer/categories/real_estate/real_estate_ad_screen.dart';
 import 'package:salegates/presentation/customer/categories/real_estate/real_estate_screen.dart';
 import 'package:salegates/presentation/customer/home/widgets/search_bar_widget.dart';
@@ -129,7 +136,9 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                   top: 60.h,
                   right: 20.w,
                   left: 20.w,
-                  child: SearchWithNotificationWidget(),
+                  child: SearchWithNotificationWidget(
+                    showBack: false,
+                  ),
                 ),
                 Positioned(
                     top: 140.h,
@@ -224,6 +233,60 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                                   MaterialPageRoute(
                                       builder: (context) =>
                                           RealEstateScreen()));
+                              break;
+                            case "2":
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          CarSubcategoriesWithoutAds(
+                                            addScreen: false,
+                                          )));
+                              break;
+                            case "3":
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          ElectonicSubcategoriesWithoutAds(
+                                            addScreen: false,
+                                          )));
+                              break;
+                            case "4":
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          ClothesSubcategoriesWithoutAds(
+                                            addScreen: false,
+                                          )));
+                              break;
+                            case "5":
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          FurnitureSubcategoriesWithoutAds(
+                                            addScreen: false,
+                                          )));
+                              break;
+                            case "6":
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          JobsSubcategoriesWithoutAds(
+                                            addScreen: false,
+                                          )));
+                              break;
+                            case "7":
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          AnimalsSubcategoriesWithoutAds(
+                                            addScreen: false,
+                                          )));
                               break;
                           }
                         },
@@ -397,6 +460,24 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
             )
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        heroTag: "boutique",
+        shape: CircleBorder(),
+        // isExtended: true,
+
+        onPressed: () {
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const RegisterScreen(
+                  selectedOption: 2,
+                ),
+              ),
+              (route) => false);
+        },
+        backgroundColor: AppColors.primary,
+        child: SvgPicture.asset("assets/svgs/boutique_logo.svg"),
       ),
     );
   }

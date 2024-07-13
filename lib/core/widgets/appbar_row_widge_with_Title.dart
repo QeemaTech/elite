@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:salegates/core/theme/colors.dart';
 import 'package:salegates/core/theme/theme.dart';
+import 'package:salegates/presentation/chat/chat_list_screen.dart';
+import 'package:salegates/presentation/customer/profile/profile_screen.dart';
 
 class AppBarRowWithTitle extends StatelessWidget {
   const AppBarRowWithTitle(
@@ -24,7 +26,15 @@ class AppBarRowWithTitle extends StatelessWidget {
         isBack!
             ? isVendor!
                 ? GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ProfileScreen(
+                              isBack: true,
+                            ),
+                          ));
+                    },
                     child: Container(
                       height: 40.h,
                       width: 40.h,
@@ -60,14 +70,33 @@ class AppBarRowWithTitle extends StatelessWidget {
           children: [
             removeSearchIcon!
                 ? const SizedBox()
-                : Container(
-                    height: 40.h,
-                    width: 40.h,
-                    padding: EdgeInsets.all(5.h),
-                    child: SvgPicture.asset(
-                      "assets/svgs/search.svg",
-                      color: Colors.white,
-                    )),
+                : isVendor!
+                    ? GestureDetector(
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ChatListScreen(
+                              showBack: true,
+                            ),
+                          ),
+                        ),
+                        child: Container(
+                            height: 40.h,
+                            width: 40.h,
+                            padding: EdgeInsets.all(5.h),
+                            child: SvgPicture.asset(
+                              "assets/svgs/chat.svg",
+                              color: Colors.white,
+                            )),
+                      )
+                    : Container(
+                        height: 40.h,
+                        width: 40.h,
+                        padding: EdgeInsets.all(5.h),
+                        child: SvgPicture.asset(
+                          "assets/svgs/search.svg",
+                          color: Colors.white,
+                        )),
             SizedBox(
               width: 5.w,
             ),

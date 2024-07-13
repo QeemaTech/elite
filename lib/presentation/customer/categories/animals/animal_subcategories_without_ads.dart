@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:salegates/core/widgets/appbar_with_title_widget.dart';
+import 'package:salegates/presentation/add%20Ads/add_ad_general_screen.dart';
 import 'package:salegates/presentation/cards/category_card_widget.dart';
+import 'package:salegates/presentation/customer/categories/animals/animal_Ads_screen.dart';
 
 class AnimalsSubcategoriesWithoutAds extends StatelessWidget {
-  AnimalsSubcategoriesWithoutAds({super.key});
+  AnimalsSubcategoriesWithoutAds({super.key, this.addScreen = true});
+  final bool addScreen;
+
   final subCategories = [
     {
       "title": "طيور",
@@ -74,16 +78,21 @@ class AnimalsSubcategoriesWithoutAds extends StatelessWidget {
                           return Padding(
                             padding: EdgeInsets.all(5.0.h),
                             child: GestureDetector(
-                              onTap: () {
-                                // Navigator.push(
-                                //     context,
-                                //     MaterialPageRoute(
-                                //         builder: (context) =>
-                                //             RealEstateSubcategoryWithAdsScreen(
-                                //               filterValue: subCategories[index]
-                                //                   ["title"]!,
-                                //             )));
-                              },
+                              onTap: addScreen
+                                  ? () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  AddGeneralAdScreen()));
+                                    }
+                                  : () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  AnimalAdsScreen()));
+                                    },
                               child: CategoryCardWidget(
                                   title: subCategories[index]["title"]!,
                                   image: subCategories[index]["image"]!),

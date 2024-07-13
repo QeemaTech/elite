@@ -94,6 +94,9 @@ class AddGeneralAdScreen extends StatelessWidget {
                       "وصف المنتج المباع",
                       style: AppTheme.textHeading15BlackWeight600(),
                     ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
                     TextFormField(
                       maxLength: 500,
                       maxLines: 5,

@@ -8,6 +8,8 @@ import 'package:salegates/presentation/cards/ad_company_card_with_rate.dart';
 import 'package:salegates/presentation/cards/pin_car_vendor_card.dart';
 import 'package:salegates/presentation/cards/vendor_profile_card.dart';
 import 'package:salegates/presentation/customer/categories/real_estate/widgets/contact_button_widget.dart';
+import 'package:salegates/presentation/customer/home/widgets/story_screen.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BoutiqueScreen extends StatelessWidget {
   const BoutiqueScreen({super.key, this.isCustomer = false});
@@ -66,10 +68,17 @@ class BoutiqueScreen extends StatelessWidget {
                                                 border: Border.all(
                                                     color: AppColors.primary,
                                                     width: 1.5)),
-                                            child: CircleAvatar(
-                                              radius: 42.h,
-                                              backgroundImage: AssetImage(
-                                                "assets/images/car2.png",
+                                            child: GestureDetector(
+                                              onTap: () => Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          StoryScreen())),
+                                              child: CircleAvatar(
+                                                radius: 42.h,
+                                                backgroundImage: AssetImage(
+                                                  "assets/images/car2.png",
+                                                ),
                                               ),
                                             ),
                                           );
@@ -148,7 +157,9 @@ class BoutiqueScreen extends StatelessWidget {
                         backgroundColor: AppColors.borderPrimaryhalf,
                         textColor: AppColors.primary,
                         width: 110.w,
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
                       ),
                       SizedBox(width: 10.w),
                       ContactButtonWidget(
@@ -159,19 +170,23 @@ class BoutiqueScreen extends StatelessWidget {
                         backgroundColor: Color(0xff1962BC).withOpacity(0.2),
                         textColor: Color(0xff1962BC),
                         width: 110.w,
-                        onPressed: () {},
+                        onPressed: () {
+                          launch("https://google.com");
+                        },
                       ),
                       SizedBox(width: 10.w),
                       ContactButtonWidget(
                         icon: "assets/svgs/whatsapp.svg",
                         iconColor: AppColors.greenWhatsapp,
-                        text: "الموقع",
+                        text: "واتس اب",
                         backgroundColor:
                             AppColors.greenWhatsapp.withOpacity(0.2),
                         textColor: AppColors.greenWhatsapp,
                         borderColor: AppColors.greenWhatsapp,
                         width: 110.w,
-                        onPressed: () {},
+                        onPressed: () {
+                          launch("https://wa.me/+201000000000");
+                        },
                       ),
                     ],
                   ),

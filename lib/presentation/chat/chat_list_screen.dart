@@ -6,9 +6,11 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:salegates/core/theme/theme.dart';
 import 'package:salegates/core/widgets/appbar_with_search_widget.dart';
+import 'package:salegates/presentation/chat/chat_screen.dart';
 
 class ChatListScreen extends StatefulWidget {
-  const ChatListScreen({super.key});
+  const ChatListScreen({super.key, this.showBack = false});
+  final bool showBack;
 
   @override
   State<ChatListScreen> createState() => _ChatListScreenState();
@@ -20,7 +22,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
     return Scaffold(
       body: Column(
         children: [
-          const AppbarWithSearchWidget(),
+          AppbarWithSearchWidget(showBack: widget.showBack),
           Expanded(
             child: Container(
               padding: EdgeInsets.all(20.h),
@@ -31,53 +33,59 @@ class _ChatListScreenState extends State<ChatListScreen> {
                     textDirection: TextDirection.ltr,
                     child: Slidable(
                       key: ValueKey(index),
-                      child: Card(
-                        surfaceTintColor: Colors.white,
-                        child: ListTile(
-                          leading: CircleAvatar(
-                            radius: 26.h,
-                            backgroundImage:
-                                AssetImage("assets/images/profile_avatar.png"),
-                          ),
-                          title: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text("Alex Lnderson",
-                                  style: AppTheme.text13Weigh600Black()
-                                      .copyWith(
-                                          fontSize: 15.sp,
-                                          fontWeight: FontWeight.w500)),
-                              Text(
-                                "2 min ago",
-                                style: AppTheme.text12grayWeight400(),
-                              )
-                            ],
-                          ),
-                          subtitle: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "How are you?",
-                                overflow: TextOverflow.ellipsis,
-                                style: AppTheme.text12grayWeight400(),
-                              ),
-                              Container(
-                                height: 25.h,
-                                width: 25.h,
-                                decoration: BoxDecoration(
-                                  color: Colors.red,
-                                  shape: BoxShape.circle,
+                      child: GestureDetector(
+                        onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ChatPage())),
+                        child: Card(
+                          surfaceTintColor: Colors.white,
+                          child: ListTile(
+                            leading: CircleAvatar(
+                              radius: 26.h,
+                              backgroundImage: AssetImage(
+                                  "assets/images/profile_avatar.png"),
+                            ),
+                            title: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text("Alex Lnderson",
+                                    style: AppTheme.text13Weigh600Black()
+                                        .copyWith(
+                                            fontSize: 15.sp,
+                                            fontWeight: FontWeight.w500)),
+                                Text(
+                                  "2 min ago",
+                                  style: AppTheme.text12grayWeight400(),
+                                )
+                              ],
+                            ),
+                            subtitle: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "How are you?",
+                                  overflow: TextOverflow.ellipsis,
+                                  style: AppTheme.text12grayWeight400(),
                                 ),
-                                child: Center(
-                                    child: Text(
-                                  "3",
-                                  style: AppTheme.textBodyWhite15Weight700()
-                                      .copyWith(
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 13.sp),
-                                )),
-                              )
-                            ],
+                                Container(
+                                  height: 25.h,
+                                  width: 25.h,
+                                  decoration: BoxDecoration(
+                                    color: Colors.red,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Center(
+                                      child: Text(
+                                    "3",
+                                    style: AppTheme.textBodyWhite15Weight700()
+                                        .copyWith(
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 13.sp),
+                                  )),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),

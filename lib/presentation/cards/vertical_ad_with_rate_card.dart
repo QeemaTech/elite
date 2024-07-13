@@ -4,8 +4,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:salegates/core/theme/theme.dart';
 
 class VerticalAdWithRateCard extends StatelessWidget {
-  const VerticalAdWithRateCard({super.key, this.image});
+  const VerticalAdWithRateCard({super.key, this.image, this.showPrice = false});
   final String? image;
+  final bool showPrice;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class VerticalAdWithRateCard extends StatelessWidget {
                 image ?? "assets/images/comm_ad1.png",
                 width: 100.w,
                 height: 90.h,
-                fit: BoxFit.cover,
+                fit: BoxFit.fitHeight,
               ),
             ),
             SizedBox(
@@ -41,27 +42,31 @@ class VerticalAdWithRateCard extends StatelessWidget {
                   height: 5.h,
                 ),
                 Text(
-                  "العنوان",
+                  showPrice ? "1000 KWD" : "العنوان",
                   style: AppTheme.textBodyprimaryWeight700()
                       .copyWith(fontSize: 14.sp),
                 ),
                 SizedBox(
-                  height: 5.h,
+                  height: 10.h,
                 ),
                 Row(
                   children: [
                     Text(
-                      "4.5",
+                      showPrice ? "العنوان" : "4.5",
                       style: AppTheme.text12grayWeight400(),
                     ),
-                    SizedBox(
-                      width: 8.w,
-                    ),
-                    Icon(
-                      Icons.star,
-                      color: Colors.orange,
-                      size: 12.sp,
-                    ),
+                    showPrice
+                        ? SizedBox()
+                        : SizedBox(
+                            width: 8.w,
+                          ),
+                    showPrice
+                        ? SizedBox()
+                        : Icon(
+                            Icons.star,
+                            color: Colors.orange,
+                            size: 12.sp,
+                          ),
                   ],
                 )
               ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:salegates/presentation/auth/register_screen.dart';
 import 'package:salegates/presentation/customer/profile/contact%20us/contact_screen.dart';
 import 'package:salegates/presentation/customer/profile/edit%20profile/edit_profile_screen.dart';
 import 'package:salegates/presentation/customer/profile/favourites/my_favourites_screen.dart';
@@ -8,14 +9,17 @@ import 'package:salegates/presentation/customer/profile/widgets/profile_header_w
 import 'package:salegates/presentation/customer/profile/widgets/profile_list_item.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+  const ProfileScreen({super.key, this.isBack = false});
+  final bool isBack;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
-          const HeaderProfileWidget(),
+          HeaderProfileWidget(
+            showBack: isBack,
+          ),
           SizedBox(
             height: 50.h,
           ),
@@ -71,13 +75,27 @@ class ProfileScreen extends StatelessWidget {
                 SizedBox(
                   height: 30.h,
                 ),
-                const ProfileListItem(
-                    text: "حذف الحساب", icon: "assets/svgs/delete_account.svg"),
+                ProfileListItem(
+                    onPressed: () => Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => RegisterScreen()),
+                          (route) => false,
+                        ),
+                    text: "حذف الحساب",
+                    icon: "assets/svgs/delete_account.svg"),
                 SizedBox(
                   height: 30.h,
                 ),
-                const ProfileListItem(
-                    text: "تسجيل الخروج", icon: "assets/svgs/logout.svg"),
+                ProfileListItem(
+                    onPressed: () => Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => RegisterScreen()),
+                          (route) => false,
+                        ),
+                    text: "تسجيل الخروج",
+                    icon: "assets/svgs/logout.svg"),
                 SizedBox(
                   height: 30.h,
                 ),

@@ -5,7 +5,8 @@ import 'package:salegates/core/theme/colors.dart';
 import 'package:salegates/presentation/customer/home/widgets/search_bar_widget.dart';
 
 class HeaderProfileWidget extends StatelessWidget {
-  const HeaderProfileWidget({super.key});
+  const HeaderProfileWidget({super.key, required this.showBack});
+  final bool showBack;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class HeaderProfileWidget extends StatelessWidget {
           top: 50.h,
           left: 20,
           right: 20,
-          child: SearchWithNotificationWidget(),
+          child: SearchWithNotificationWidget(showBack: showBack),
         ),
         Positioned(
             bottom: -30.h,

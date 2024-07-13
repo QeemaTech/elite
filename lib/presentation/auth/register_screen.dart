@@ -17,7 +17,8 @@ import 'package:salegates/presentation/auth/widgets/user_profile_image.dart';
 import 'package:salegates/presentation/auth/widgets/user_type.dart';
 
 class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({super.key});
+  const RegisterScreen({super.key, this.selectedOption = 1});
+  final int selectedOption;
 
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
@@ -26,6 +27,12 @@ class RegisterScreen extends StatefulWidget {
 class _RegisterScreenState extends State<RegisterScreen> {
   int selectedOption = 1;
   bool approveTerms = false;
+  @override
+  void initState() {
+    // TODO: implement initState
+    selectedOption = widget.selectedOption;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

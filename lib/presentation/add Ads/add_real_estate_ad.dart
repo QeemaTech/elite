@@ -372,12 +372,15 @@ class _AddAdCheckBoxState extends State<AddAdCheckBox> {
     return Directionality(
       textDirection: TextDirection.ltr,
       child: SizedBox(
-        width: 130.w,
+        width: 140.w,
         child: ListTileTheme(
           child: CheckboxListTile(
               value: isSelected,
               contentPadding: EdgeInsets.zero,
-              title: Text("قابل للنقاش"),
+              title: Text(
+                "قابل للنقاش",
+                textAlign: TextAlign.right,
+              ),
               onChanged: (value) {
                 setState(() {
                   isSelected = value!;

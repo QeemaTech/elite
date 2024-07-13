@@ -9,6 +9,7 @@ import 'package:salegates/presentation/customer/categories/real_estate/widgets/c
 
 class CarCategoryVendorScreen extends StatelessWidget {
   CarCategoryVendorScreen({super.key});
+
   final carBrands = [
     {
       "id": "1",
