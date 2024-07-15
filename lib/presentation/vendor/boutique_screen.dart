@@ -21,7 +21,7 @@ class BoutiqueScreen extends StatelessWidget {
         body: Column(
           children: [
             AppbarWithTitleWidget(
-              title: "بوتيك",
+              title: "Gallary",
               isVendor: !isCustomer!,
             ),
             SizedBox(
@@ -29,7 +29,7 @@ class BoutiqueScreen extends StatelessWidget {
             ),
             Expanded(
               child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.w),
+                  padding: EdgeInsets.symmetric(horizontal: 0.w),
                   child: SingleChildScrollView(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,7 +47,7 @@ class BoutiqueScreen extends StatelessWidget {
                         SizedBox(
                           height: 10.h,
                         ),
-                        Divider(),
+                        const Divider(),
                         SizedBox(
                           height: 10.h,
                         ),
@@ -55,45 +55,70 @@ class BoutiqueScreen extends StatelessWidget {
                             ? Column(
                                 children: [
                                   SizedBox(
-                                    height: 80.h,
+                                    height: 100.h,
                                     child: ListView.builder(
-                                        itemCount: 8,
+                                        itemCount: 9,
                                         shrinkWrap: true,
                                         scrollDirection: Axis.horizontal,
                                         itemBuilder: (context, index) {
-                                          return Container(
-                                            height: 70.h,
-                                            decoration: BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                border: Border.all(
-                                                    color: AppColors.primary,
-                                                    width: 1.5)),
-                                            child: GestureDetector(
-                                              onTap: () => Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          StoryScreen())),
-                                              child: CircleAvatar(
-                                                radius: 42.h,
-                                                backgroundImage: AssetImage(
-                                                  "assets/images/car2.png",
-                                                ),
-                                              ),
-                                            ),
-                                          );
+                                          return (index == 0)
+                                              ? Container(
+                                                  height: 70.h,
+                                                  decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      border: Border.all(
+                                                          color:
+                                                              AppColors.primary,
+                                                          width: 1.5)),
+                                                  padding:
+                                                      const EdgeInsets.all(30),
+                                                  child: GestureDetector(
+                                                    onTap: () => Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                StoryScreen())),
+                                                    child: const Icon(
+                                                      Icons.add,
+                                                      size: 50,
+                                                    ),
+                                                  ),
+                                                )
+                                              : Container(
+                                                  height: 70.h,
+                                                  decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      border: Border.all(
+                                                          color:
+                                                              AppColors.primary,
+                                                          width: 1.5)),
+                                                  child: GestureDetector(
+                                                    onTap: () => Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                StoryScreen())),
+                                                    child: CircleAvatar(
+                                                      radius: 55.h,
+                                                      backgroundImage:
+                                                          const AssetImage(
+                                                        "assets/images/car2.png",
+                                                      ),
+                                                    ),
+                                                  ),
+                                                );
                                         }),
                                   ),
                                   SizedBox(
                                     height: 10.h,
                                   ),
-                                  Divider(),
+                                  const Divider(),
                                   SizedBox(
                                     height: 10.h,
                                   ),
                                 ],
                               )
-                            : SizedBox(),
+                            : const SizedBox(),
                         Text(
                           "اعلانات مثبتة",
                           style: AppTheme.textHeading15BlackWeight600(),
@@ -106,10 +131,11 @@ class BoutiqueScreen extends StatelessWidget {
                               scrollDirection: Axis.horizontal,
                               itemBuilder: (context, index) {
                                 return SizedBox(
-                                    width: 200.w, child: PinCarCardVendor());
+                                    width: 200.w,
+                                    child: const PinCarCardVendor());
                               }),
                         ),
-                        Divider(),
+                        const Divider(),
                         SizedBox(
                           height: 10.h,
                         ),
@@ -121,17 +147,18 @@ class BoutiqueScreen extends StatelessWidget {
                           height: 10.h,
                         ),
                         GridView.builder(
-                          itemCount: 9,
+                          itemCount: 14,
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            childAspectRatio: 0.9,
-                          ),
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 3,
+                                  mainAxisSpacing: 4,
+                                  childAspectRatio: 0.7,
+                                  crossAxisSpacing: 4),
                           itemBuilder: (context, index) {
-                            return PinCarCardVendor(
+                            return const PinCarCardVendor(
                               image: "assets/images/car2.png",
                             );
                           },
@@ -164,11 +191,12 @@ class BoutiqueScreen extends StatelessWidget {
                       SizedBox(width: 10.w),
                       ContactButtonWidget(
                         icon: "assets/svgs/website.svg",
-                        iconColor: Color(0xff1962BC),
-                        borderColor: Color(0xff1962BC),
+                        iconColor: const Color(0xff1962BC),
+                        borderColor: const Color(0xff1962BC),
                         text: "الموقع",
-                        backgroundColor: Color(0xff1962BC).withOpacity(0.2),
-                        textColor: Color(0xff1962BC),
+                        backgroundColor:
+                            const Color(0xff1962BC).withOpacity(0.2),
+                        textColor: const Color(0xff1962BC),
                         width: 110.w,
                         onPressed: () {
                           launch("https://google.com");

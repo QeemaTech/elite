@@ -73,10 +73,12 @@ class PinCarCardVendor extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'سيارة لوتس الترا الجديدة',
-                    style: AppTheme.text12grayWeight500().copyWith(
-                        color: Colors.black, fontWeight: FontWeight.w600),
+                  FittedBox(
+                    child: Text(
+                      'سيارة لوتس الترا الجديدة',
+                      style: AppTheme.text12grayWeight400().copyWith(
+                          color: Colors.black, fontWeight: FontWeight.w600),
+                    ),
                   ),
                   SizedBox(
                     height: 5.h,
@@ -86,16 +88,19 @@ class PinCarCardVendor extends StatelessWidget {
                     style: AppTheme.text12grayWeight500().copyWith(
                         color: Colors.black, fontWeight: FontWeight.w600),
                   ),
-                  Row(children: [
-                    SvgPicture.asset("assets/svgs/calendar.svg"),
-                    SizedBox(
-                      width: 5.w,
-                    ),
-                    Text(
-                      "Sat 6 April, 2024",
-                      style: AppTheme.text12grayWeight500(),
-                    ),
-                  ])
+                  FittedBox(
+                    child: Row(children: [
+                      SvgPicture.asset("assets/svgs/calendar.svg"),
+                      SizedBox(
+                        width: 5.w,
+                      ),
+                      Text(
+                        "Sat 6 April, 2024",
+                        overflow: TextOverflow.ellipsis,
+                        style: AppTheme.text12grayWeight500(),
+                      ),
+                    ]),
+                  )
                 ],
               ),
             )
