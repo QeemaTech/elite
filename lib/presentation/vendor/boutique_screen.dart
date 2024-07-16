@@ -11,6 +11,8 @@ import 'package:salegates/presentation/customer/categories/real_estate/widgets/c
 import 'package:salegates/presentation/customer/home/widgets/story_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../auth/widgets/social_icon.dart';
+
 class BoutiqueScreen extends StatelessWidget {
   const BoutiqueScreen({super.key, this.isCustomer = false});
   final bool? isCustomer;
@@ -21,7 +23,7 @@ class BoutiqueScreen extends StatelessWidget {
         body: Column(
           children: [
             AppbarWithTitleWidget(
-              title: "Gallary",
+              title: "G A L L A R Y",
               isVendor: !isCustomer!,
             ),
             SizedBox(
@@ -35,6 +37,23 @@ class BoutiqueScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         VendorProfileCard(isCustomer: isCustomer!),
+                        const Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            SocialIcon(
+                                backgroundColor: Colors.white,
+                                icon: "assets/svgs/google.svg"),
+                            SocialIcon(
+                                backgroundColor: Colors.black,
+                                icon: "assets/svgs/twitter-x.svg"),
+                            SocialIcon(
+                                backgroundColor: Color(0xff616161),
+                                icon: "assets/svgs/apple.svg"),
+                            SocialIcon(
+                                backgroundColor: Color(0xff4285F4),
+                                icon: "assets/svgs/facebook.svg"),
+                          ],
+                        ),
                         ContactButtonWidget(
                             onPressed: () {},
                             width: double.infinity,
@@ -119,9 +138,15 @@ class BoutiqueScreen extends StatelessWidget {
                                 ],
                               )
                             : const SizedBox(),
-                        Text(
-                          "اعلانات مثبتة",
-                          style: AppTheme.textHeading15BlackWeight600(),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: Text(
+                            "اعلانات مثبتة",
+                            style: AppTheme.textHeading15BlackWeight600(),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20,
                         ),
                         SizedBox(
                           height: 200,
@@ -139,17 +164,21 @@ class BoutiqueScreen extends StatelessWidget {
                         SizedBox(
                           height: 10.h,
                         ),
-                        Text(
-                          "المنتجات",
-                          style: AppTheme.textHeading15BlackWeight600(),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: Text(
+                            "الاصناف",
+                            style: AppTheme.textHeading15BlackWeight600(),
+                          ),
                         ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
+                        // SizedBox(
+                        //   height: 10.h,
+                        // ),
                         GridView.builder(
                           itemCount: 14,
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
+                          padding: EdgeInsets.symmetric(vertical: 10),
                           physics: const NeverScrollableScrollPhysics(),
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(

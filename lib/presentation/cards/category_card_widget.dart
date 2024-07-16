@@ -20,33 +20,31 @@ class CategoryCardWidget extends StatelessWidget {
         ),
         color: AppColors.primaryLight,
       ),
-      child: Padding(
-          padding: EdgeInsets.all(10.h),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                flex: 7,
-                child: Image.asset(
-                  image,
-                  fit: BoxFit.contain,
-                ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Expanded(
+            flex: 9,
+            child: Image.asset(
+              image,
+              fit: BoxFit.contain,
+            ),
+          ),
+          Expanded(
+            flex: 4,
+            child: Align(
+              alignment: Alignment.center,
+              child: Text(
+                title,
+                textAlign: TextAlign.center,
+                style: AppTheme.text18BlackWeight700()
+                    .copyWith(fontSize: 11.sp, fontWeight: FontWeight.w800),
               ),
-              Expanded(
-                flex: 4,
-                child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Text(
-                    title,
-                    textAlign: TextAlign.center,
-                    style: AppTheme.text18BlackWeight700()
-                        .copyWith(fontSize: 11.sp, fontWeight: FontWeight.w800),
-                  ),
-                ),
-              )
-            ],
-          )),
+            ),
+          )
+        ],
+      ),
     );
   }
 }

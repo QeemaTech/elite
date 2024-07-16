@@ -25,7 +25,7 @@ class StoryWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(7.h),
           border: Border.all(color: Colors.white, width: 1.w),
         ),
-        width: 84.w,
+        width: 78.w,
         child: Stack(
           children: [
             Positioned(

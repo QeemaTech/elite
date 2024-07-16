@@ -14,8 +14,9 @@ class VerticalRealEstateCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       surfaceTintColor: Colors.white,
+      elevation: 4,
       child: Padding(
-        padding: EdgeInsets.all(8.h),
+        padding: EdgeInsets.all(0.h),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -23,8 +24,8 @@ class VerticalRealEstateCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(6.r),
               child: Image.asset(
                 image ?? "assets/images/comm_ad1.png",
-                width: 100.w,
-                height: 90.h,
+                width: 150.w,
+                height: 120.h,
                 fit: BoxFit.cover,
               ),
             ),

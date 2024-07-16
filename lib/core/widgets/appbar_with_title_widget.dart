@@ -29,11 +29,14 @@ class AppbarWithTitleWidget extends StatelessWidget {
           SizedBox(
             height: 20.h,
           ),
-          AppBarRowWithTitle(
-            title: title,
-            removeSearchIcon: removeSearchIcon,
-            isVendor: isVendor,
-            isBack: isBack,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: AppBarRowWithTitle(
+              title: title,
+              removeSearchIcon: removeSearchIcon,
+              isVendor: isVendor,
+              isBack: isBack,
+            ),
           ),
         ],
       ),

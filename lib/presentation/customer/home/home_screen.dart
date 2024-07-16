@@ -142,8 +142,8 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                 ),
                 Positioned(
                     top: 140.h,
-                    right: 20.w,
-                    left: 20.w,
+                    right: 10.w,
+                    left: 10.w,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -165,14 +165,14 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                     )),
                 Positioned(
                     bottom: -60.h,
-                    right: 20.w,
-                    left: 20.w,
+                    right: 10.w,
+                    left: 10.w,
                     child: SizedBox(
                       height: 120.h,
                       child: ListView.builder(
                         //  physics: NeverScrollableScrollPhysics(),
                         scrollDirection: Axis.horizontal,
-                        itemCount: 4,
+                        itemCount: 5,
                         itemBuilder: (context, index) => Padding(
                           padding: EdgeInsets.all(2.0.w),
                           child: StoryWidget(),
@@ -185,11 +185,11 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
               height: 50.h,
             ),
             Container(
-              padding: EdgeInsets.all(20.h),
+              padding: EdgeInsets.all(10.h),
               child: Column(children: [
                 Container(
                   height: 40.h,
-                  padding: EdgeInsets.symmetric(horizontal: 10.w),
+                  //   padding: EdgeInsets.symmetric(horizontal: 5.w),
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: AppColors.primary,
