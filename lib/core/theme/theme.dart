@@ -49,7 +49,7 @@ class AppTheme {
     return TextStyle(
       color: Colors.white,
       fontSize: 15.sp,
-      fontWeight: FontWeight.w700,
+      fontWeight: FontWeight.bold,
     );
   }
 

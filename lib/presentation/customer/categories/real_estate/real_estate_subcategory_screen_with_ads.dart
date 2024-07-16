@@ -144,7 +144,7 @@ class _RealEstateSubcategoryWithAdsScreenState
           AppbarWithTitleWidget(title: "قسم العقارات"),
           Expanded(
             child: Padding(
-                padding: EdgeInsets.all(20.0.h),
+                padding: EdgeInsets.symmetric(vertical: 10),
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
@@ -158,21 +158,21 @@ class _RealEstateSubcategoryWithAdsScreenState
                               selectedItem: allFilterSelectedValue,
                             ),
                             SizedBox(
-                              width: 20.w,
+                              width: 10.w,
                             ),
                             DropDownFilter(
                               items: subCategoryFilter,
                               selectedItem: subCategoryFilterSelectedValue,
                             ),
                             SizedBox(
-                              width: 20.w,
+                              width: 10.w,
                             ),
                             DropDownFilter(
                               items: priceFilter,
                               selectedItem: priceFilterSelectedValue,
                             ),
                             SizedBox(
-                              width: 20.w,
+                              width: 10.w,
                             ),
                             DropDownFilter(
                               items: roomFilter,
@@ -191,12 +191,16 @@ class _RealEstateSubcategoryWithAdsScreenState
                       SizedBox(
                         height: 20.h,
                       ),
-                      TextWithAll(text: "كل الإعلانات", onTap: () {}),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
+                        child: TextWithAll(text: "كل الإعلانات", onTap: () {}),
+                      ),
                       ListView.builder(
                           itemCount: items.length,
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
                           physics: const NeverScrollableScrollPhysics(),
+                          padding: EdgeInsets.symmetric(vertical: 5),
                           itemBuilder: (context, index) {
                             if (items[index]["category"] == "1") {
                               return Padding(
