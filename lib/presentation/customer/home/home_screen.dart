@@ -436,7 +436,12 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                       style: AppTheme.text18BlackWeight700(),
                     ),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => RealEstateScreen()));
+                      },
                       child: Text(
                         "عرض الكل",
                         style: AppTheme.textBodyprimaryWeight700(),

@@ -1,12 +1,15 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:salegates/core/theme/colors.dart';
 import 'package:salegates/core/theme/theme.dart';
 import 'package:salegates/core/widgets/common_widgets.dart';
@@ -27,6 +30,11 @@ class RegisterScreen extends StatefulWidget {
 class _RegisterScreenState extends State<RegisterScreen> {
   int selectedOption = 1;
   bool approveTerms = false;
+
+  XFile? selectediImage;
+
+  String selectedFileText = "ارفع ملف الشركة";
+
   @override
   void initState() {
     // TODO: implement initState
@@ -59,10 +67,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               Center(
                 child: GestureDetector(
-                  onTap: () {
+                  onTap: () async {
+                    final ImagePicker picker = ImagePicker();
+                    // Pick an image.
+                    final XFile? image =
+                        await picker.pickImage(source: ImageSource.camera);
+                    if (image == null) {
+                      return;
+                    } else {
+                      setState(() {
+                        selectediImage = image;
+                      });
+                    }
+
                     log("edit profile image");
                   },
-                  child: UserProfileImage(),
+                  child: UserProfileImage(
+                    image: selectediImage,
+                  ),
                 ),
               ),
               SizedBox(
@@ -258,11 +280,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         height: 10.h,
                       ),
                       AuthTextEditing(
-                        hintText: "ارفع ملف الشركة",
+                        hintText: selectedFileText,
                         keyboardType: TextInputType.text,
                         readOnly: true,
                         suffixIcon: GestureDetector(
-                          onTap: () {
+                          onTap: () async {
+                            FilePickerResult? result =
+                                await FilePicker.platform.pickFiles();
+
+                            if (result != null) {
+                              File file = File(result.files.single.path!);
+                              if (file != null) {
+                                setState(() {
+                                  selectedFileText = result.files.single.name;
+                                });
+                              }
+                            } else {
+                              // User canceled the picker
+                              return;
+                            }
                             log("clicked");
                           },
                           child: Container(

@@ -1,11 +1,15 @@
+import 'dart:io';
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:salegates/core/theme/colors.dart';
 
 class UserProfileImage extends StatelessWidget {
-  const UserProfileImage({super.key});
+  UserProfileImage({super.key, this.image});
+  XFile? image;
 
   @override
   Widget build(BuildContext context) {
@@ -19,18 +23,26 @@ class UserProfileImage extends StatelessWidget {
           child: DottedBorder(
             borderType: BorderType.Circle,
             dashPattern: const [5, 10],
-            color: AppColors.primary,
+            color: image == null ? AppColors.primary : Colors.white,
             child: Container(
-              margin: EdgeInsets.only(top: 30.h),
+              margin:
+                  image == null ? EdgeInsets.only(top: 30.h) : EdgeInsets.zero,
               child: ClipOval(
                 child: Align(
                   alignment: Alignment.bottomCenter,
-                  child: SvgPicture.asset(
-                    "assets/svgs/userplaceholder.svg",
-                    fit: BoxFit.cover,
-                    height: 200.h,
-                    width: 200.h,
-                  ),
+                  child: image == null
+                      ? SvgPicture.asset(
+                          "assets/svgs/userplaceholder.svg",
+                          fit: BoxFit.cover,
+                          height: 200.h,
+                          width: 200.h,
+                        )
+                      : Image.file(
+                          File(image!.path),
+                          fit: BoxFit.cover,
+                          height: 200.h,
+                          width: 200.h,
+                        ),
                 ),
               ),
             ),
