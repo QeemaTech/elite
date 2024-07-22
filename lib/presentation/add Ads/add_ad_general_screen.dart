@@ -16,103 +16,110 @@ class AddGeneralAdScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          AppbarWithTitleWidget(title: "انشاء اعلان"),
-          Expanded(
-              child: Container(
-            padding: EdgeInsets.all(20.h),
-            child: SingleChildScrollView(
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    AddAdCloseContainer(),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    AddAdUploadPhotosWidget(),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    TextFieldWithLabel(title: "اسم الاعلان"),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    Container(
-                      height: 40.h,
-                      width: double.infinity,
-                      padding:
-                          EdgeInsets.symmetric(vertical: 5.h, horizontal: 10.w),
-                      decoration: BoxDecoration(
-                          color: AppColors.primaryLight,
-                          borderRadius: BorderRadius.circular(5.r)),
-                      child: Text(
-                        "المعلومات",
-                        style: AppTheme.textBodyprimaryWeight700(),
+      body: Padding(
+        padding: MediaQuery.sizeOf(context).width > 700
+            ? EdgeInsets.symmetric(horizontal: 200.0.w)
+            : EdgeInsets.zero,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            AppbarWithTitleWidget(title: "انشاء اعلان"),
+            Expanded(
+                child: Container(
+              padding: EdgeInsets.all(20.h),
+              child: SingleChildScrollView(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      AddAdCloseContainer(),
+                      SizedBox(
+                        height: 20.h,
                       ),
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    TextFieldWithLabel(title: "السعر"),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    AddAdCheckBox(),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    Text(
-                      "الموقع",
-                      style: AppTheme.textHeading15BlackWeight600(),
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    DropdownButtonFormField(
-                        items: [
-                          DropdownMenuItem(
-                            child: Text("القاهرة"),
-                            value: "cairo",
-                          )
-                        ],
+                      AddAdUploadPhotosWidget(),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      TextFieldWithLabel(title: "اسم الاعلان"),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      Container(
+                        height: 40.h,
+                        width: double.infinity,
+                        padding: EdgeInsets.symmetric(
+                            vertical: 5.h, horizontal: 10.w),
+                        decoration: BoxDecoration(
+                            color: AppColors.primaryLight,
+                            borderRadius: BorderRadius.circular(5.r)),
+                        child: Text(
+                          "المعلومات",
+                          style: AppTheme.textBodyprimaryWeight700(),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      TextFieldWithLabel(title: "السعر"),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      AddAdCheckBox(),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      Text(
+                        "الموقع",
+                        style: AppTheme.textHeading15BlackWeight600(),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      DropdownButtonFormField(
+                          items: [
+                            DropdownMenuItem(
+                              child: Text("القاهرة"),
+                              value: "cairo",
+                            )
+                          ],
+                          decoration: InputDecoration(
+                            border: AppTheme.dropDownBorder(),
+                            enabledBorder: AppTheme.dropDownBorder(),
+                            focusedBorder: AppTheme.dropDownBorder(),
+                          ),
+                          value: "cairo",
+                          onChanged: (value) {}),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      Text(
+                        "وصف المنتج المباع",
+                        style: AppTheme.textHeading15BlackWeight600(),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      TextFormField(
+                        maxLength: 500,
+                        maxLines: 5,
                         decoration: InputDecoration(
                           border: AppTheme.dropDownBorder(),
                           enabledBorder: AppTheme.dropDownBorder(),
                           focusedBorder: AppTheme.dropDownBorder(),
                         ),
-                        value: "cairo",
-                        onChanged: (value) {}),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    Text(
-                      "وصف المنتج المباع",
-                      style: AppTheme.textHeading15BlackWeight600(),
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    TextFormField(
-                      maxLength: 500,
-                      maxLines: 5,
-                      decoration: InputDecoration(
-                        border: AppTheme.dropDownBorder(),
-                        enabledBorder: AppTheme.dropDownBorder(),
-                        focusedBorder: AppTheme.dropDownBorder(),
                       ),
-                    ),
-                  ]),
-            ),
-          )),
-        ],
+                    ]),
+              ),
+            )),
+          ],
+        ),
       ),
       bottomNavigationBar: Padding(
-        padding: EdgeInsets.all(20.0.h),
+        padding: MediaQuery.sizeOf(context).width > 700
+            ? EdgeInsets.symmetric(horizontal: 200.0.w)
+            : EdgeInsets.all(20.h),
         child: AppButton(
             onPressed: () {
               showDialog(

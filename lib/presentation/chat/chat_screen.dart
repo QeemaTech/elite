@@ -2,10 +2,12 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 import 'package:mime/mime.dart';
@@ -212,29 +214,36 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        body: Column(
-          children: [
-            AppbarWithTitleWidget(
-              title: 'Chat',
-              isBack: true,
-            ),
-            Expanded(
-              child: Chat(
-                messages: _messages,
-                //   onAttachmentPressed: _handleAttachmentPressed,
-                onMessageTap: _handleMessageTap,
-                onPreviewDataFetched: _handlePreviewDataFetched,
-                onSendPressed: _handleSendPressed,
-                showUserAvatars: true,
-                showUserNames: true,
-                user: _user,
-                theme: const DefaultChatTheme(
-                  inputBackgroundColor: AppColors.primary,
-                  primaryColor: AppColors.primary,
+        body: Padding(
+          padding: MediaQuery.sizeOf(context).width > 700
+              ? EdgeInsets.symmetric(horizontal: 200.0.w)
+              : EdgeInsets.zero,
+          child: Column(
+            children: [
+              kIsWeb
+                  ? const SizedBox()
+                  : AppbarWithTitleWidget(
+                      title: 'Chat',
+                      isBack: true,
+                    ),
+              Expanded(
+                child: Chat(
+                  messages: _messages,
+                  //   onAttachmentPressed: _handleAttachmentPressed,
+                  onMessageTap: _handleMessageTap,
+                  onPreviewDataFetched: _handlePreviewDataFetched,
+                  onSendPressed: _handleSendPressed,
+                  showUserAvatars: true,
+                  showUserNames: true,
+                  user: _user,
+                  theme: const DefaultChatTheme(
+                    inputBackgroundColor: AppColors.primary,
+                    primaryColor: AppColors.primary,
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       );
 }

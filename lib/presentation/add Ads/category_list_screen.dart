@@ -59,81 +59,90 @@ class CategoryListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          AppbarWithTitleWidget(title: "الإعلانات"),
-          GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
-                mainAxisSpacing: 5.h,
-                crossAxisSpacing: 5.h,
-              ),
-              physics: NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: categoryItems.length,
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () {
-                    switch (categoryItems[index]["category_id"]) {
-                      case "1":
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    RealEstateSubcategoriesWithoutAds()));
-                        break;
-                      case "2":
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    CarSubcategoriesWithoutAds()));
-                        break;
-                      case "3":
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    ElectonicSubcategoriesWithoutAds()));
-                        break;
-                      case "4":
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    ClothesSubcategoriesWithoutAds()));
-                        break;
-                      case "5":
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    FurnitureSubcategoriesWithoutAds()));
-                        break;
-                      case "6":
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    JobsSubcategoriesWithoutAds()));
-                        break;
-                      case "7":
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    AnimalsSubcategoriesWithoutAds()));
-                        break;
-                    }
-                  },
-                  child: CategoryCardWidget(
-                    image: categoryItems[index]["image"]!,
-                    title: categoryItems[index]["title"]!,
-                    key: ValueKey(categoryItems[index]["id"]),
+      body: Padding(
+        padding: MediaQuery.sizeOf(context).width > 700
+            ? EdgeInsets.symmetric(horizontal: 200.0.w)
+            : EdgeInsets.zero,
+        child: Column(
+          children: [
+            AppbarWithTitleWidget(title: "الإعلانات"),
+            SizedBox(height: 20.h),
+            Expanded(
+              child: GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount:
+                        MediaQuery.of(context).size.width > 600 ? 8 : 3,
+                    mainAxisSpacing: 5.h,
+                    crossAxisSpacing: 5.h,
                   ),
-                );
-              })
-        ],
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: categoryItems.length,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        switch (categoryItems[index]["category_id"]) {
+                          case "1":
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        RealEstateSubcategoriesWithoutAds()));
+                            break;
+                          case "2":
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        CarSubcategoriesWithoutAds()));
+                            break;
+                          case "3":
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        ElectonicSubcategoriesWithoutAds()));
+                            break;
+                          case "4":
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        ClothesSubcategoriesWithoutAds()));
+                            break;
+                          case "5":
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        FurnitureSubcategoriesWithoutAds()));
+                            break;
+                          case "6":
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        JobsSubcategoriesWithoutAds()));
+                            break;
+                          case "7":
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        AnimalsSubcategoriesWithoutAds()));
+                            break;
+                        }
+                      },
+                      child: CategoryCardWidget(
+                        image: categoryItems[index]["image"]!,
+                        title: categoryItems[index]["title"]!,
+                        key: ValueKey(categoryItems[index]["id"]),
+                      ),
+                    );
+                  }),
+            )
+          ],
+        ),
       ),
     );
   }

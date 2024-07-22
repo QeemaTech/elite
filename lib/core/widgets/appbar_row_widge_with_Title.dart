@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -37,8 +38,9 @@ class _AppBarRowWithTitleState extends State<AppBarRowWithTitle> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const ProfileScreen(
+                            builder: (context) => ProfileScreen(
                               isBack: true,
+                              isVendor: true,
                             ),
                           ));
                     },
@@ -68,7 +70,7 @@ class _AppBarRowWithTitleState extends State<AppBarRowWithTitle> {
                     ),
                   )
             : const SizedBox(),
-        const SizedBox(),
+        if (!kIsWeb) const SizedBox(),
         Text(
           widget.title,
           style: AppTheme.textBodyWhite15Weight700().copyWith(fontSize: 18.sp),
@@ -83,8 +85,7 @@ class _AppBarRowWithTitleState extends State<AppBarRowWithTitle> {
                           context,
                           MaterialPageRoute(
                             builder: (context) => ChatListScreen(
-                              showBack: true,
-                            ),
+                                showBack: true, isVendor: widget.isVendor),
                           ),
                         ),
                         child: Container(

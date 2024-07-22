@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -77,122 +78,132 @@ class RealEstateScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const AppbarWithTitleWidget(title: "قسم العقارات"),
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.all(20.0.h),
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    GridView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: subCategories.length,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 4,
-                        ),
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: EdgeInsets.all(5.0.h),
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            RealEstateSubcategoryWithAdsScreen(
-                                              filterValue: subCategories[index]
-                                                  ["title"]!,
-                                            )));
-                              },
-                              child: CategoryCardWidget(
-                                  title: subCategories[index]["title"]!,
-                                  image: subCategories[index]["image"]!),
-                            ),
-                          );
-                        }),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    const SliderWidget(),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    TextWithAll(
-                      text: "بيزنس",
-                      onTap: () {},
-                      allColor: AppColors.textOrangeColor,
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    SizedBox(
-                      height: 120.h,
-                      child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: businessSubCategories.length,
+      body: Padding(
+        padding: MediaQuery.sizeOf(context).width > 700
+            ? EdgeInsets.symmetric(horizontal: 200.0.w)
+            : EdgeInsets.zero,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const AppbarWithTitleWidget(title: "قسم العقارات"),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.all(20.0.h),
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      GridView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: subCategories.length,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount:
+                                MediaQuery.of(context).size.width > 600 ? 8 : 4,
+                          ),
                           itemBuilder: (context, index) {
                             return Padding(
                               padding: EdgeInsets.all(5.0.h),
-                              child: InkWell(
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              RealEstateSubcategoryWithAdsScreen(
+                                                filterValue:
+                                                    subCategories[index]
+                                                        ["title"]!,
+                                              )));
+                                },
+                                child: CategoryCardWidget(
+                                    title: subCategories[index]["title"]!,
+                                    image: subCategories[index]["image"]!),
+                              ),
+                            );
+                          }),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      const SliderWidget(),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      TextWithAll(
+                        text: "بيزنس",
+                        onTap: () {},
+                        allText: kIsWeb ? "" : "عرض الكل",
+                        allColor: AppColors.textOrangeColor,
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      SizedBox(
+                        height: 120.h,
+                        child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: businessSubCategories.length,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: EdgeInsets.all(5.0.h),
+                                child: InkWell(
+                                  onTap: () => Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              RealEstateSubcategoryWithAdsScreen(
+                                                filterValue:
+                                                    subCategories[index]
+                                                        ["title"]!,
+                                              ))),
+                                  child: CategoryCardWidget(
+                                      title: businessSubCategories[index]
+                                          ["title"]!,
+                                      image: businessSubCategories[index]
+                                          ["image"]!),
+                                ),
+                              );
+                            }),
+                      ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      TextWithAll(
+                        text: "اعلانات مدفوعة",
+                        onTap: () {},
+                        allColor: AppColors.textOrangeColor,
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      SizedBox(
+                        height: 210.h,
+                        child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            shrinkWrap: true,
+                            itemCount: businessSubCategories.length,
+                            itemBuilder: (context, index) {
+                              return InkWell(
                                 onTap: () => Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            RealEstateSubcategoryWithAdsScreen(
-                                              filterValue: subCategories[index]
-                                                  ["title"]!,
-                                            ))),
-                                child: CategoryCardWidget(
-                                    title: businessSubCategories[index]
-                                        ["title"]!,
-                                    image: businessSubCategories[index]
-                                        ["image"]!),
-                              ),
-                            );
-                          }),
-                    ),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    TextWithAll(
-                      text: "اعلانات مدفوعة",
-                      onTap: () {},
-                      allColor: AppColors.textOrangeColor,
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    SizedBox(
-                      height: 210.h,
-                      child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          shrinkWrap: true,
-                          itemCount: businessSubCategories.length,
-                          itemBuilder: (context, index) {
-                            return InkWell(
-                              onTap: () => Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          RealEstateAdScreen())),
-                              child: Padding(
-                                padding: EdgeInsets.all(5.0.h),
-                                child: const HorizontalRealEstateCard(),
-                              ),
-                            );
-                          }),
-                    ),
-                  ],
+                                            RealEstateAdScreen())),
+                                child: Padding(
+                                  padding: EdgeInsets.all(5.0.h),
+                                  child: const HorizontalRealEstateCard(),
+                                ),
+                              );
+                            }),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -67,87 +68,95 @@ class ChooseSectionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          AppbarWithTitleWidget(
-            title: "اختر القسم",
-            removeSearchIcon: true,
-            isBack: false,
-          ),
-          SizedBox(
-            height: 10.h,
-          ),
-          Padding(
-            padding: EdgeInsets.all(20.0.h),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Container(
-                    height: 50.h,
-                    padding: EdgeInsets.symmetric(horizontal: 10.w),
-                    decoration: BoxDecoration(
-                      color: AppColors.primaryLight,
-                      border: Border.all(color: AppColors.primary),
-                      borderRadius: BorderRadius.circular(10.h),
-                    ),
-                    child: TextField(
-                      readOnly: true,
-                      decoration: InputDecoration(
-                          border: InputBorder.none,
-                          icon: SvgPicture.asset("assets/svgs/search.svg"),
-                          hintText: "بحث عن قسم",
-                          hintStyle:
-                              AppTheme.textBody16black39weight400().copyWith(
-                            color: AppColors.primary,
-                          )),
-                    ),
-                  ),
-                  GridView.builder(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3,
-                        mainAxisSpacing: 5.h,
-                        crossAxisSpacing: 5.h,
+      body: Padding(
+        padding: MediaQuery.sizeOf(context).width > 700
+            ? EdgeInsets.symmetric(horizontal: 200.0.w)
+            : EdgeInsets.zero,
+        child: Column(
+          children: [
+            AppbarWithTitleWidget(
+              title: "اختر القسم",
+              removeSearchIcon: true,
+              isBack: false,
+            ),
+            SizedBox(
+              height: 10.h,
+            ),
+            Padding(
+              padding: EdgeInsets.all(20.0.h),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Container(
+                      height: 50.h,
+                      padding: EdgeInsets.symmetric(horizontal: 10.w),
+                      decoration: BoxDecoration(
+                        color: AppColors.primaryLight,
+                        border: Border.all(color: AppColors.primary),
+                        borderRadius: BorderRadius.circular(10.h),
                       ),
-                      physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: categoryItems.length,
-                      itemBuilder: (context, index) {
-                        return GestureDetector(
-                          onTap: () {
-                            switch (categoryItems[index]["category_id"]) {
-                              case "2":
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            CarCategoryVendorScreen()));
-                                break;
-                              case "8":
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            BoutiqueScreen()));
-                                break;
-                            }
-                          },
-                          child: CategoryCardWidget(
-                            image: categoryItems[index]["image"]!,
-                            title: categoryItems[index]["title"]!,
-                            key: ValueKey(categoryItems[index]["id"]),
-                          ),
-                        );
-                      }),
+                      child: TextField(
+                        readOnly: true,
+                        decoration: InputDecoration(
+                            border: InputBorder.none,
+                            icon: SvgPicture.asset("assets/svgs/search.svg"),
+                            hintText: "بحث عن قسم",
+                            hintStyle:
+                                AppTheme.textBody16black39weight400().copyWith(
+                              color: AppColors.primary,
+                            )),
+                      ),
+                    ),
 
-                  // SizedBox(
-                  //   height: 100.h,
-                  // ),
-                  //   AppButton(onPressed: (){}, text: )
-                ],
+                    SizedBox(height: 20.h),
+                    GridView.builder(
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount:
+                              MediaQuery.of(context).size.width > 600 ? 8 : 3,
+                          mainAxisSpacing: 5.h,
+                          crossAxisSpacing: 5.h,
+                        ),
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: categoryItems.length,
+                        itemBuilder: (context, index) {
+                          return GestureDetector(
+                            onTap: () {
+                              switch (categoryItems[index]["category_id"]) {
+                                case "2":
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              CarCategoryVendorScreen()));
+                                  break;
+                                case "8":
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              BoutiqueScreen()));
+                                  break;
+                              }
+                            },
+                            child: CategoryCardWidget(
+                              image: categoryItems[index]["image"]!,
+                              title: categoryItems[index]["title"]!,
+                              key: ValueKey(categoryItems[index]["id"]),
+                            ),
+                          );
+                        }),
+
+                    // SizedBox(
+                    //   height: 100.h,
+                    // ),
+                    //   AppButton(onPressed: (){}, text: )
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

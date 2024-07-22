@@ -34,58 +34,65 @@ class CarSubcategoriesWithoutAds extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const AppbarWithTitleWidget(title: "سيارات"),
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.all(20.0.h),
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    GridView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: subCategories.length,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3,
-                        ),
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: EdgeInsets.all(5.0.h),
-                            child: GestureDetector(
-                              onTap: addScreen
-                                  ? () {
-                                      if (subCategories[index]["id"] == "1" ||
-                                          subCategories[index]["id"] == "2") {
+      body: Padding(
+        padding: MediaQuery.sizeOf(context).width > 700
+            ? EdgeInsets.symmetric(horizontal: 200.0.w)
+            : EdgeInsets.zero,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const AppbarWithTitleWidget(title: "سيارات"),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.all(20.0.h),
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      GridView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: subCategories.length,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount:
+                                MediaQuery.of(context).size.width > 600 ? 8 : 3,
+                          ),
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: EdgeInsets.all(5.0.h),
+                              child: GestureDetector(
+                                onTap: addScreen
+                                    ? () {
+                                        if (subCategories[index]["id"] == "1" ||
+                                            subCategories[index]["id"] == "2") {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      CarBrandScreen()));
+                                        }
+                                      }
+                                    : () {
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    CarBrandScreen()));
-                                      }
-                                    }
-                                  : () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  CarAdsScreen()));
-                                    },
-                              child: CategoryCardWidget(
-                                  title: subCategories[index]["title"]!,
-                                  image: subCategories[index]["image"]!),
-                            ),
-                          );
-                        }),
-                  ],
+                                                    CarAdsScreen()));
+                                      },
+                                child: CategoryCardWidget(
+                                    title: subCategories[index]["title"]!,
+                                    image: subCategories[index]["image"]!),
+                              ),
+                            );
+                          }),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

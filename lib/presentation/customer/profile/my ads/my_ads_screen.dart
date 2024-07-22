@@ -10,32 +10,37 @@ class MyAdsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          const MyAdsHeaderWidget(),
-          SizedBox(
-            height: 20.h,
-          ),
-          Expanded(
-              child: ListView.builder(
-                  itemCount: 10,
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => RealEstateAdScreen(
-                                      isEdit: true,
-                                    )));
-                      },
-                      child: VerticalRealEstateCard(
-                        image: "assets/images/home.png",
-                        edit: true,
-                      ),
-                    );
-                  }))
-        ],
+      body: Padding(
+        padding: MediaQuery.sizeOf(context).width > 700
+            ? EdgeInsets.symmetric(horizontal: 200.0.w)
+            : EdgeInsets.zero,
+        child: Column(
+          children: [
+            const MyAdsHeaderWidget(),
+            SizedBox(
+              height: 20.h,
+            ),
+            Expanded(
+                child: ListView.builder(
+                    itemCount: 10,
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => RealEstateAdScreen(
+                                        isEdit: true,
+                                      )));
+                        },
+                        child: VerticalRealEstateCard(
+                          image: "assets/images/home.png",
+                          edit: true,
+                        ),
+                      );
+                    }))
+          ],
+        ),
       ),
     );
   }

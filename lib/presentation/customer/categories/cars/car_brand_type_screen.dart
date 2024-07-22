@@ -60,118 +60,125 @@ class _CarBrandScreenState extends State<CarBrandScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          AppbarWithTitleWidget(
-            title: " سيارات",
-          ),
-          Expanded(
-            child: Container(
-              padding: EdgeInsets.all(20.h),
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "حدد ماركه السياره",
-                      style: AppTheme.textHeading15BlackWeight600(),
-                    ),
-                    GridView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: carBrands.length,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 4,
-                        ),
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: EdgeInsets.all(5.0.h),
-                            child: GestureDetector(
-                              onTap: () {},
-                              child: CategoryCardWidget(
-                                  title: carBrands[index]["title"]!,
-                                  image: carBrands[index]["image"]!),
-                            ),
-                          );
-                        }),
-                    SizedBox(height: 20.h),
-                    Text(
-                      "اختر الفئة",
-                      style: AppTheme.textHeading15BlackWeight600(),
-                    ),
-                    SizedBox(height: 10.h),
-                    DropdownButtonFormField(
-                      decoration: InputDecoration(
-                        border: AppTheme.dropDownBorder(),
-                        enabledBorder: AppTheme.dropDownBorder(),
-                        focusedBorder: AppTheme.dropDownBorder(),
+      body: Padding(
+        padding: MediaQuery.sizeOf(context).width > 700
+            ? EdgeInsets.symmetric(horizontal: 200.0.w)
+            : EdgeInsets.zero,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            AppbarWithTitleWidget(
+              title: " سيارات",
+            ),
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.all(20.h),
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "حدد ماركه السياره",
+                        style: AppTheme.textHeading15BlackWeight600(),
                       ),
+                      GridView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: carBrands.length,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount:
+                                MediaQuery.of(context).size.width > 600 ? 8 : 4,
+                          ),
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: EdgeInsets.all(5.0.h),
+                              child: GestureDetector(
+                                onTap: () {},
+                                child: CategoryCardWidget(
+                                    title: carBrands[index]["title"]!,
+                                    image: carBrands[index]["image"]!),
+                              ),
+                            );
+                          }),
+                      SizedBox(height: 20.h),
+                      Text(
+                        "اختر الفئة",
+                        style: AppTheme.textHeading15BlackWeight600(),
+                      ),
+                      SizedBox(height: 10.h),
+                      DropdownButtonFormField(
+                        decoration: InputDecoration(
+                          border: AppTheme.dropDownBorder(),
+                          enabledBorder: AppTheme.dropDownBorder(),
+                          focusedBorder: AppTheme.dropDownBorder(),
+                        ),
 
-                      onChanged: (value) => setState(() {}),
-                      //isExpanded: true,
-                      style: AppTheme.text12grayWeight500(),
-                      icon: const Icon(
-                        Icons.keyboard_arrow_down,
-                        color: AppColors.primary,
-                      ),
-                      iconSize: 30.h,
-                      value: "ford",
-                      items: [
-                        const DropdownMenuItem(
-                          child: Text("فورد تورس"),
-                          value: "ford",
+                        onChanged: (value) => setState(() {}),
+                        //isExpanded: true,
+                        style: AppTheme.text12grayWeight500(),
+                        icon: const Icon(
+                          Icons.keyboard_arrow_down,
+                          color: AppColors.primary,
                         ),
-                      ].toList(),
-                    ),
-                    SizedBox(
-                      height: 30.h,
-                    ),
-                    Text(
-                      "اختر السنة",
-                      style: AppTheme.textHeading15BlackWeight600(),
-                    ),
-                    SizedBox(height: 10.h),
-                    DropdownButtonFormField(
-                      decoration: InputDecoration(
-                        border: AppTheme.dropDownBorder(),
-                        enabledBorder: AppTheme.dropDownBorder(),
-                        focusedBorder: AppTheme.dropDownBorder(),
+                        iconSize: 30.h,
+                        value: "ford",
+                        items: [
+                          const DropdownMenuItem(
+                            child: Text("فورد تورس"),
+                            value: "ford",
+                          ),
+                        ].toList(),
                       ),
+                      SizedBox(
+                        height: 30.h,
+                      ),
+                      Text(
+                        "اختر السنة",
+                        style: AppTheme.textHeading15BlackWeight600(),
+                      ),
+                      SizedBox(height: 10.h),
+                      DropdownButtonFormField(
+                        decoration: InputDecoration(
+                          border: AppTheme.dropDownBorder(),
+                          enabledBorder: AppTheme.dropDownBorder(),
+                          focusedBorder: AppTheme.dropDownBorder(),
+                        ),
 
-                      onChanged: (value) => setState(() {}),
-                      //isExpanded: true,
-                      style: AppTheme.text12grayWeight500(),
-                      icon: const Icon(
-                        Icons.keyboard_arrow_down,
-                        color: AppColors.primary,
-                      ),
-                      iconSize: 30.h,
-                      value: "2024",
-                      items: [
-                        const DropdownMenuItem(
-                          child: Text("2024"),
-                          value: "2024",
+                        onChanged: (value) => setState(() {}),
+                        //isExpanded: true,
+                        style: AppTheme.text12grayWeight500(),
+                        icon: const Icon(
+                          Icons.keyboard_arrow_down,
+                          color: AppColors.primary,
                         ),
-                      ].toList(),
-                    ),
-                    SizedBox(
-                      height: 100.h,
-                    ),
-                    AppButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => AddCarAdsScreen()));
-                        },
-                        text: "التالي"),
-                  ],
+                        iconSize: 30.h,
+                        value: "2024",
+                        items: [
+                          const DropdownMenuItem(
+                            child: Text("2024"),
+                            value: "2024",
+                          ),
+                        ].toList(),
+                      ),
+                      SizedBox(
+                        height: 100.h,
+                      ),
+                      AppButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => AddCarAdsScreen()));
+                          },
+                          text: "التالي"),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

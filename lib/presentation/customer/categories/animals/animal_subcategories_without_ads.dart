@@ -55,56 +55,63 @@ class AnimalsSubcategoriesWithoutAds extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const AppbarWithTitleWidget(title: "حيوانات وطيور"),
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.all(20.0.h),
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    GridView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: subCategories.length,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 4,
-                          childAspectRatio: 1 / 1.3,
-                        ),
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: EdgeInsets.all(5.0.h),
-                            child: GestureDetector(
-                              onTap: addScreen
-                                  ? () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  AddGeneralAdScreen()));
-                                    }
-                                  : () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  AnimalAdsScreen()));
-                                    },
-                              child: CategoryCardWidget(
-                                  title: subCategories[index]["title"]!,
-                                  image: subCategories[index]["image"]!),
-                            ),
-                          );
-                        }),
-                  ],
+      body: Padding(
+        padding: MediaQuery.sizeOf(context).width > 700
+            ? EdgeInsets.symmetric(horizontal: 200.0.w)
+            : EdgeInsets.zero,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const AppbarWithTitleWidget(title: "حيوانات وطيور"),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.all(20.0.h),
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      GridView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: subCategories.length,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount:
+                                MediaQuery.of(context).size.width > 600 ? 8 : 4,
+                            childAspectRatio: 1 / 1.3,
+                          ),
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: EdgeInsets.all(5.0.h),
+                              child: GestureDetector(
+                                onTap: addScreen
+                                    ? () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    AddGeneralAdScreen()));
+                                      }
+                                    : () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    AnimalAdsScreen()));
+                                      },
+                                child: CategoryCardWidget(
+                                    title: subCategories[index]["title"]!,
+                                    image: subCategories[index]["image"]!),
+                              ),
+                            );
+                          }),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

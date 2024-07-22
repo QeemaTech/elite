@@ -21,111 +21,116 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const EditProfileHeaderWidget(),
-          SizedBox(
-            height: 30.h,
-          ),
-          Expanded(
-            child: Container(
-              padding: EdgeInsets.all(20.h),
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "الاسم",
-                      style: AppTheme.text13Weigh600Black()
-                          .copyWith(color: Colors.black),
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    AuthTextEditing(
-                      hintText: "أسامة محمد دياب",
-                      backgroundColor: AppColors.primaryLight,
-                      hintTextColor: Colors.black,
-                      suffixIcon: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: SvgPicture.asset("assets/svgs/name_icon.svg"),
+      body: Padding(
+        padding: MediaQuery.sizeOf(context).width > 700
+            ? EdgeInsets.symmetric(horizontal: 200.0.w)
+            : EdgeInsets.zero,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const EditProfileHeaderWidget(),
+            SizedBox(
+              height: 30.h,
+            ),
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.all(20.h),
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "الاسم",
+                        style: AppTheme.text13Weigh600Black()
+                            .copyWith(color: Colors.black),
                       ),
-                    ),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    Text(
-                      "البريد الالكتروني",
-                      style: AppTheme.text13Weigh600Black()
-                          .copyWith(color: Colors.black),
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    AuthTextEditing(
-                      hintText: "@gmail.com",
-                      backgroundColor: AppColors.primaryLight,
-                      hintTextColor: Colors.black,
-                    ),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    Text(
-                      "رقم الهاتف",
-                      style: AppTheme.text13Weigh600Black()
-                          .copyWith(color: Colors.black),
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: AuthTextEditing(
-                            hintText: "05123546513",
-                            keyboardType: TextInputType.number,
-                            backgroundColor: AppColors.primaryLight,
-                            hintTextColor: Colors.black,
-                          ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      AuthTextEditing(
+                        hintText: "أسامة محمد دياب",
+                        backgroundColor: AppColors.primaryLight,
+                        hintTextColor: Colors.black,
+                        suffixIcon: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: SvgPicture.asset("assets/svgs/name_icon.svg"),
                         ),
-                        SizedBox(
-                          width: 10.w,
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            color: AppColors.primaryLight,
-                            border: Border.all(
-                              color: AppColors.borderColor,
-                              width: 1,
+                      ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      Text(
+                        "البريد الالكتروني",
+                        style: AppTheme.text13Weigh600Black()
+                            .copyWith(color: Colors.black),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      AuthTextEditing(
+                        hintText: "@gmail.com",
+                        backgroundColor: AppColors.primaryLight,
+                        hintTextColor: Colors.black,
+                      ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      Text(
+                        "رقم الهاتف",
+                        style: AppTheme.text13Weigh600Black()
+                            .copyWith(color: Colors.black),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: AuthTextEditing(
+                              hintText: "05123546513",
+                              keyboardType: TextInputType.number,
+                              backgroundColor: AppColors.primaryLight,
+                              hintTextColor: Colors.black,
                             ),
                           ),
-                          child: CountryCodePicker(
-                            showDropDownButton: true,
-                            padding: EdgeInsets.zero,
-                            textStyle: TextStyle(fontSize: 12.sp),
-                            flagWidth: 20.w,
-                            initialSelection: 'SA',
-                            showCountryOnly: false,
-                            showOnlyCountryWhenClosed: false,
+                          SizedBox(
+                            width: 10.w,
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    SizedBox(
-                      height: 100.h,
-                    ),
-                    AppButton(onPressed: () {}, text: "حفظ"),
-                  ],
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              color: AppColors.primaryLight,
+                              border: Border.all(
+                                color: AppColors.borderColor,
+                                width: 1,
+                              ),
+                            ),
+                            child: CountryCodePicker(
+                              showDropDownButton: true,
+                              padding: EdgeInsets.zero,
+                              textStyle: TextStyle(fontSize: 12.sp),
+                              flagWidth: 20.w,
+                              initialSelection: 'SA',
+                              showCountryOnly: false,
+                              showOnlyCountryWhenClosed: false,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      SizedBox(
+                        height: 100.h,
+                      ),
+                      AppButton(onPressed: () {}, text: "حفظ"),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

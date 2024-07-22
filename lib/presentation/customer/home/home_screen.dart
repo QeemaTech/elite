@@ -1,4 +1,5 @@
 import 'package:another_carousel_pro/another_carousel_pro.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -172,7 +173,7 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                       child: ListView.builder(
                         //  physics: NeverScrollableScrollPhysics(),
                         scrollDirection: Axis.horizontal,
-                        itemCount: 5,
+                        itemCount: 15,
                         itemBuilder: (context, index) => Padding(
                           padding: EdgeInsets.all(2.0.w),
                           child: StoryWidget(),
@@ -216,13 +217,18 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                 // ),
                 GridView.builder(
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
+                      crossAxisCount:
+                          MediaQuery.of(context).size.width > 700 ? 8 : 3,
                       mainAxisSpacing: 5.h,
                       crossAxisSpacing: 5.h,
                     ),
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    itemCount: expand ? widget.itemcount2 : widget.itemcount1,
+                    itemCount: kIsWeb
+                        ? widget.itemcount2
+                        : expand
+                            ? widget.itemcount2
+                            : widget.itemcount1,
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
@@ -300,35 +306,37 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                 SizedBox(
                   height: 20.h,
                 ),
-                MaterialButton(
-                  onPressed: () {
-                    setState(() {
-                      expand = !expand;
-                    });
-                  },
-                  height: 60.h,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.r),
-                  ),
-                  padding: EdgeInsets.symmetric(horizontal: 20.w),
-                  minWidth: double.infinity,
-                  color: AppColors.primary,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        expand ? "عرض أقل" : "عرض الكل",
-                        style: AppTheme.textButton18WiteWeight600(),
+                kIsWeb
+                    ? SizedBox()
+                    : MaterialButton(
+                        onPressed: () {
+                          setState(() {
+                            expand = !expand;
+                          });
+                        },
+                        height: 60.h,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.r),
+                        ),
+                        padding: EdgeInsets.symmetric(horizontal: 20.w),
+                        minWidth: double.infinity,
+                        color: AppColors.primary,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              expand ? "عرض أقل" : "عرض الكل",
+                              style: AppTheme.textButton18WiteWeight600(),
+                            ),
+                            SizedBox(
+                              width: 10.w,
+                            ),
+                            SvgPicture.asset(expand
+                                ? "assets/svgs/arrow_up.svg"
+                                : "assets/svgs/arrow_down.svg")
+                          ],
+                        ),
                       ),
-                      SizedBox(
-                        width: 10.w,
-                      ),
-                      SvgPicture.asset(expand
-                          ? "assets/svgs/arrow_up.svg"
-                          : "assets/svgs/arrow_down.svg")
-                    ],
-                  ),
-                ),
                 SizedBox(
                   height: 20.h,
                 ),
@@ -449,18 +457,36 @@ class _CustomerHomeScreenState extends State<CustomerHomeScreen> {
                     ),
                   ],
                 ),
-                ListView.builder(
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    itemCount: 3,
-                    itemBuilder: (context, index) {
-                      return SizedBox(
-                        height: 120.h,
-                        child: VerticalRealEstateCard(
-                          edit: false,
-                        ),
-                      );
-                    })
+                kIsWeb
+                    ? SizedBox(
+                        height: 200.h,
+                        child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: 8,
+                            itemBuilder: (context, index) {
+                              return InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                RealEstateAdScreen()));
+                                  },
+                                  child: const HorizontalRealEstateCard());
+                            }),
+                      )
+                    : ListView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: 3,
+                        itemBuilder: (context, index) {
+                          return SizedBox(
+                            height: 120.h,
+                            child: VerticalRealEstateCard(
+                              edit: false,
+                            ),
+                          );
+                        })
               ]),
             )
           ],

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -28,7 +29,12 @@ class _CustomerNavigationScreenState extends State<CustomerNavigationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _screens[_currentIndex],
+      body: Padding(
+        padding: MediaQuery.sizeOf(context).width > 700
+            ? EdgeInsets.symmetric(horizontal: 200.0.w)
+            : EdgeInsets.zero,
+        child: _screens[_currentIndex],
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         shape: CircleBorder(),
@@ -43,46 +49,51 @@ class _CustomerNavigationScreenState extends State<CustomerNavigationScreen> {
           color: Colors.white,
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.white,
-          type: BottomNavigationBarType.fixed,
-          currentIndex: _currentIndex,
-          onTap: (value) {
-            setState(() {
-              _currentIndex = value;
-            });
-          },
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          items: [
-            BottomNavigationBarItem(
-              icon: _currentIndex == 0
-                  ? SvgPicture.asset(
-                      "assets/svgs/home_s.svg",
-                      height: 35.h,
-                    )
-                  : SvgPicture.asset("assets/svgs/home.svg"),
-              label: 'home',
-            ),
-            BottomNavigationBarItem(
-              icon: _currentIndex == 1
-                  ? SvgPicture.asset("assets/svgs/chat_s.svg")
-                  : SvgPicture.asset("assets/svgs/chat.svg"),
-              label: 'home',
-            ),
-            BottomNavigationBarItem(
-              icon: _currentIndex == 2
-                  ? SvgPicture.asset("assets/svgs/tag_s.svg")
-                  : SvgPicture.asset("assets/svgs/tag.svg"),
-              label: 'home',
-            ),
-            BottomNavigationBarItem(
-              icon: _currentIndex == 3
-                  ? SvgPicture.asset("assets/svgs/profile_s.svg")
-                  : SvgPicture.asset("assets/svgs/profile.svg"),
-              label: 'home',
-            ),
-          ]),
+      bottomNavigationBar: Padding(
+        padding: MediaQuery.sizeOf(context).width > 600
+            ? EdgeInsets.symmetric(horizontal: 200.0.w)
+            : EdgeInsets.zero,
+        child: BottomNavigationBar(
+            backgroundColor: Colors.white,
+            type: BottomNavigationBarType.fixed,
+            currentIndex: _currentIndex,
+            onTap: (value) {
+              setState(() {
+                _currentIndex = value;
+              });
+            },
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+            items: [
+              BottomNavigationBarItem(
+                icon: _currentIndex == 0
+                    ? SvgPicture.asset(
+                        "assets/svgs/home_s.svg",
+                        height: 35.h,
+                      )
+                    : SvgPicture.asset("assets/svgs/home.svg"),
+                label: 'home',
+              ),
+              BottomNavigationBarItem(
+                icon: _currentIndex == 1
+                    ? SvgPicture.asset("assets/svgs/chat_s.svg")
+                    : SvgPicture.asset("assets/svgs/chat.svg"),
+                label: 'home',
+              ),
+              BottomNavigationBarItem(
+                icon: _currentIndex == 2
+                    ? SvgPicture.asset("assets/svgs/tag_s.svg")
+                    : SvgPicture.asset("assets/svgs/tag.svg"),
+                label: 'home',
+              ),
+              BottomNavigationBarItem(
+                icon: _currentIndex == 3
+                    ? SvgPicture.asset("assets/svgs/profile_s.svg")
+                    : SvgPicture.asset("assets/svgs/profile.svg"),
+                label: 'home',
+              ),
+            ]),
+      ),
     );
   }
 }

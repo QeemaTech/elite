@@ -102,13 +102,23 @@ class VerticalRealEstateCard extends StatelessWidget {
             ),
             Spacer(),
             edit!
-                ? GestureDetector(
-                    onTap: () {},
-                    child: SvgPicture.asset("assets/svgs/more.svg"),
+                ? Padding(
+                    padding: MediaQuery.of(context).size.width > 700
+                        ? EdgeInsets.all(10.h)
+                        : EdgeInsets.zero,
+                    child: GestureDetector(
+                      onTap: () {},
+                      child: SvgPicture.asset("assets/svgs/more.svg"),
+                    ),
                   )
-                : GestureDetector(
-                    onTap: () {},
-                    child: SvgPicture.asset("assets/svgs/fav_red.svg")),
+                : Padding(
+                    padding: MediaQuery.of(context).size.width > 700
+                        ? EdgeInsets.all(10.h)
+                        : EdgeInsets.zero,
+                    child: GestureDetector(
+                        onTap: () {},
+                        child: SvgPicture.asset("assets/svgs/fav_red.svg")),
+                  ),
           ],
         ),
       ),

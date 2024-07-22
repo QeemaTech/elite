@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:salegates/core/widgets/appbar_with_title_widget.dart';
 import 'package:salegates/presentation/cards/vertical_ad_with_rate_card.dart';
 import 'package:salegates/presentation/cards/vertical_real_estate_card.dart';
@@ -32,26 +33,31 @@ class MyFavouritsesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(children: [
-        AppbarWithTitleWidget(
-          title: "المفضلة",
-        ),
-        Expanded(
-            child: ListView.builder(
-                itemCount: items.length,
-                itemBuilder: (context, index) {
-                  if (items[index]["category"] == "1") {
-                    return VerticalAdWithRateCard(
-                      image: items[index]["image"],
-                    );
-                  } else {
-                    return VerticalRealEstateCard(
-                      edit: false,
-                      image: items[index]["image"],
-                    );
-                  }
-                }))
-      ]),
+      body: Padding(
+        padding: MediaQuery.sizeOf(context).width > 700
+            ? EdgeInsets.symmetric(horizontal: 200.0.w)
+            : EdgeInsets.zero,
+        child: Column(children: [
+          AppbarWithTitleWidget(
+            title: "المفضلة",
+          ),
+          Expanded(
+              child: ListView.builder(
+                  itemCount: items.length,
+                  itemBuilder: (context, index) {
+                    if (items[index]["category"] == "1") {
+                      return VerticalAdWithRateCard(
+                        image: items[index]["image"],
+                      );
+                    } else {
+                      return VerticalRealEstateCard(
+                        edit: false,
+                        image: items[index]["image"],
+                      );
+                    }
+                  }))
+        ]),
+      ),
     );
   }
 }

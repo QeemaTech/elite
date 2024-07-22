@@ -56,81 +56,88 @@ class CarCategoryVendorScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          AppbarWithTitleWidget(
-            title: "قسم السيارات",
-            isVendor: true,
-          ),
-          SizedBox(
-            height: 10.h,
-          ),
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    VendorProfileCard(),
-                    ContactButtonWidget(
-                        onPressed: () {},
-                        width: double.infinity,
-                        height: 40.h,
-                        text: "مشاركة الصفحة ",
-                        icon: "assets/svgs/share.svg",
-                        iconColor: Colors.black,
-                        textColor: Colors.black,
-                        backgroundColor: Colors.white),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    Divider(),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    Text(
-                      "اعلاناتي",
-                      style: AppTheme.textHeading15BlackWeight600(),
-                    ),
-                    GridView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: carBrands.length,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 4,
-                        ),
-                        itemBuilder: (context, index) {
-                          return Padding(
-                            padding: EdgeInsets.all(5.0.h),
-                            child: GestureDetector(
-                              onTap: () {},
-                              child: CategoryCardWidget(
-                                  title: carBrands[index]["title"]!,
-                                  image: carBrands[index]["image"]!),
-                            ),
-                          );
-                        }),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    Text(
-                      "المضاف حديثا",
-                      style: AppTheme.textHeading15BlackWeight600(),
-                    ),
-                    ListView.builder(
-                        itemCount: 7,
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          return VerticalVendorAdCard();
-                        })
-                  ],
+      body: Padding(
+        padding: MediaQuery.sizeOf(context).width > 700
+            ? EdgeInsets.symmetric(horizontal: 200.0.w)
+            : EdgeInsets.zero,
+        child: Column(
+          children: [
+            AppbarWithTitleWidget(
+              title: "قسم السيارات",
+              isVendor: true,
+            ),
+            SizedBox(
+              height: 10.h,
+            ),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      VendorProfileCard(),
+                      ContactButtonWidget(
+                          onPressed: () {},
+                          width: double.infinity,
+                          height: 40.h,
+                          text: "مشاركة الصفحة ",
+                          icon: "assets/svgs/share.svg",
+                          iconColor: Colors.black,
+                          textColor: Colors.black,
+                          backgroundColor: Colors.white),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      Divider(),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      Text(
+                        "اعلاناتي",
+                        style: AppTheme.textHeading15BlackWeight600(),
+                      ),
+                      GridView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: carBrands.length,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount:
+                                MediaQuery.of(context).size.width > 600 ? 8 : 4,
+                          ),
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: EdgeInsets.all(5.0.h),
+                              child: GestureDetector(
+                                onTap: () {},
+                                child: CategoryCardWidget(
+                                    title: carBrands[index]["title"]!,
+                                    image: carBrands[index]["image"]!),
+                              ),
+                            );
+                          }),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      Text(
+                        "المضاف حديثا",
+                        style: AppTheme.textHeading15BlackWeight600(),
+                      ),
+                      ListView.builder(
+                          itemCount: 7,
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemBuilder: (context, index) {
+                            return VerticalVendorAdCard();
+                          })
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

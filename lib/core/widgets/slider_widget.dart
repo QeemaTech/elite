@@ -1,4 +1,5 @@
 import 'package:another_carousel_pro/another_carousel_pro.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:salegates/core/theme/colors.dart';
@@ -9,7 +10,7 @@ class SliderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 150.h,
+      height: kIsWeb ? 270.h : 150.h,
       width: double.infinity,
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.r)),
       child: AnotherCarousel(

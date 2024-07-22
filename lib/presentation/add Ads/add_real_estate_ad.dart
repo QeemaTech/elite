@@ -57,185 +57,192 @@ class AddRealEstateAd extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          AppbarWithTitleWidget(title: "انشاء اعلان"),
-          Expanded(
-              child: Container(
-            padding: EdgeInsets.all(20.h),
-            child: SingleChildScrollView(
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    AddAdCloseContainer(),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    AddAdUploadPhotosWidget(),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    TextFieldWithLabel(title: "اسم الاعلان"),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    Container(
-                      height: 40.h,
-                      width: double.infinity,
-                      padding:
-                          EdgeInsets.symmetric(vertical: 5.h, horizontal: 10.w),
-                      decoration: BoxDecoration(
-                          color: AppColors.primaryLight,
-                          borderRadius: BorderRadius.circular(5.r)),
-                      child: Text(
-                        "المعلومات",
-                        style: AppTheme.textBodyprimaryWeight700(),
+      body: Padding(
+        padding: MediaQuery.sizeOf(context).width > 700
+            ? EdgeInsets.symmetric(horizontal: 200.0.w)
+            : EdgeInsets.zero,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            AppbarWithTitleWidget(title: "انشاء اعلان"),
+            Expanded(
+                child: Container(
+              padding: EdgeInsets.all(20.h),
+              child: SingleChildScrollView(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      AddAdCloseContainer(),
+                      SizedBox(
+                        height: 20.h,
                       ),
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    // Text(
-                    //   "طريقة العرض",
-                    //   style: AppTheme.textHeading15BlackWeight600(),
-                    // ),
-                    // SizedBox(
-                    //   height: 10.h,
-                    // ),
-                    // Center(
-                    //   child: ToggleSwitch(
-                    //     minWidth: 170.0,
-                    //     initialLabelIndex: 1,
-                    //     cornerRadius: 5.0.h,
-                    //     activeFgColor: Colors.white,
-                    //     inactiveBgColor: Colors.white,
-                    //     inactiveFgColor: Colors.black,
-                    //     radiusStyle: true,
-                    //     totalSwitches: 2,
-                    //     labels: ['ايجار', 'بيع'],
-                    //     activeBgColors: [
-                    //       [AppColors.primary],
-                    //       [AppColors.primary]
-                    //     ],
-                    //     onToggle: (index) {
-                    //       print('switched to: $index');
-                    //     },
-                    //   ),
-                    // ),
-                    SizedBox(
-                      height: 20.h,
-                    ),
-                    TextFieldWithLabel(title: "السعر"),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    AddAdCheckBox(),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    Text(
-                      "النوع",
-                      style: AppTheme.textHeading15BlackWeight600(),
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    AddAdWrapList(
-                      items: typeItems,
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    TextFieldWithLabel(title: "المساحه (م2)"),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    Text(
-                      "الكماليات",
-                      style: AppTheme.textHeading15BlackWeight600(),
-                    ),
-                    AddAdWrapList(items: Addons),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    TextFieldWithLabel(title: "عدد الغرف"),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    TextFieldWithLabel(title: "الحمامات"),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    TextFieldWithLabel(title: "الطابق"),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    Text(
-                      "مفروش",
-                      style: AppTheme.textHeading15BlackWeight600(),
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    ToggleSwitch(
-                      minWidth: 80.0,
-                      initialLabelIndex: 1,
-                      cornerRadius: 5.0.h,
-                      activeFgColor: Colors.white,
-                      inactiveBgColor: Colors.white,
-                      inactiveFgColor: Colors.black,
-                      radiusStyle: true,
-                      totalSwitches: 2,
-                      labels: ['نعم', 'لا'],
-                      activeBgColors: [
-                        [AppColors.primary],
-                        [AppColors.primary]
-                      ],
-                      onToggle: (index) {
-                        print('switched to: $index');
-                      },
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    Text(
-                      "الموقع",
-                      style: AppTheme.textHeading15BlackWeight600(),
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    DropdownButtonFormField(
-                        items: [
-                          DropdownMenuItem(
-                            child: Text("القاهرة"),
-                            value: "cairo",
-                          )
-                        ],
-                        decoration: InputDecoration(
-                          border: AppTheme.dropDownBorder(),
-                          enabledBorder: AppTheme.dropDownBorder(),
-                          focusedBorder: AppTheme.dropDownBorder(),
+                      AddAdUploadPhotosWidget(),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      TextFieldWithLabel(title: "اسم الاعلان"),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      Container(
+                        height: 40.h,
+                        width: double.infinity,
+                        padding: EdgeInsets.symmetric(
+                            vertical: 5.h, horizontal: 10.w),
+                        decoration: BoxDecoration(
+                            color: AppColors.primaryLight,
+                            borderRadius: BorderRadius.circular(5.r)),
+                        child: Text(
+                          "المعلومات",
+                          style: AppTheme.textBodyprimaryWeight700(),
                         ),
-                        value: "cairo",
-                        onChanged: (value) {}),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    TextFieldWithLabel(
-                      title: "اوصف المنتج المباع",
-                    )
-                  ]),
-            ),
-          )),
-        ],
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      // Text(
+                      //   "طريقة العرض",
+                      //   style: AppTheme.textHeading15BlackWeight600(),
+                      // ),
+                      // SizedBox(
+                      //   height: 10.h,
+                      // ),
+                      // Center(
+                      //   child: ToggleSwitch(
+                      //     minWidth: 170.0,
+                      //     initialLabelIndex: 1,
+                      //     cornerRadius: 5.0.h,
+                      //     activeFgColor: Colors.white,
+                      //     inactiveBgColor: Colors.white,
+                      //     inactiveFgColor: Colors.black,
+                      //     radiusStyle: true,
+                      //     totalSwitches: 2,
+                      //     labels: ['ايجار', 'بيع'],
+                      //     activeBgColors: [
+                      //       [AppColors.primary],
+                      //       [AppColors.primary]
+                      //     ],
+                      //     onToggle: (index) {
+                      //       print('switched to: $index');
+                      //     },
+                      //   ),
+                      // ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      TextFieldWithLabel(title: "السعر"),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      AddAdCheckBox(),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      Text(
+                        "النوع",
+                        style: AppTheme.textHeading15BlackWeight600(),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      AddAdWrapList(
+                        items: typeItems,
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      TextFieldWithLabel(title: "المساحه (م2)"),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      Text(
+                        "الكماليات",
+                        style: AppTheme.textHeading15BlackWeight600(),
+                      ),
+                      AddAdWrapList(items: Addons),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      TextFieldWithLabel(title: "عدد الغرف"),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      TextFieldWithLabel(title: "الحمامات"),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      TextFieldWithLabel(title: "الطابق"),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      Text(
+                        "مفروش",
+                        style: AppTheme.textHeading15BlackWeight600(),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      ToggleSwitch(
+                        minWidth: 80.0,
+                        initialLabelIndex: 1,
+                        cornerRadius: 5.0.h,
+                        activeFgColor: Colors.white,
+                        inactiveBgColor: Colors.white,
+                        inactiveFgColor: Colors.black,
+                        radiusStyle: true,
+                        totalSwitches: 2,
+                        labels: ['نعم', 'لا'],
+                        activeBgColors: [
+                          [AppColors.primary],
+                          [AppColors.primary]
+                        ],
+                        onToggle: (index) {
+                          print('switched to: $index');
+                        },
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      Text(
+                        "الموقع",
+                        style: AppTheme.textHeading15BlackWeight600(),
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      DropdownButtonFormField(
+                          items: [
+                            DropdownMenuItem(
+                              child: Text("القاهرة"),
+                              value: "cairo",
+                            )
+                          ],
+                          decoration: InputDecoration(
+                            border: AppTheme.dropDownBorder(),
+                            enabledBorder: AppTheme.dropDownBorder(),
+                            focusedBorder: AppTheme.dropDownBorder(),
+                          ),
+                          value: "cairo",
+                          onChanged: (value) {}),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      TextFieldWithLabel(
+                        title: "اوصف المنتج المباع",
+                      )
+                    ]),
+              ),
+            )),
+          ],
+        ),
       ),
       bottomNavigationBar: Padding(
-        padding: EdgeInsets.all(10.0.h),
+        padding: MediaQuery.sizeOf(context).width > 700
+            ? EdgeInsets.symmetric(horizontal: 200.0.w)
+            : EdgeInsets.all(20.h),
         child: AppButton(
             onPressed: () {
               showDialog(

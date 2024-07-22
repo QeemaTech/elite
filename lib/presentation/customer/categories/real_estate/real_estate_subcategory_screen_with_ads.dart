@@ -139,109 +139,115 @@ class _RealEstateSubcategoryWithAdsScreenState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          AppbarWithTitleWidget(title: "قسم العقارات"),
-          Expanded(
-            child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 10),
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: 45.h,
-                        child: ListView(
-                          scrollDirection: Axis.horizontal,
-                          children: [
-                            DropDownFilter(
-                              items: allfilters,
-                              selectedItem: allFilterSelectedValue,
-                            ),
-                            SizedBox(
-                              width: 10.w,
-                            ),
-                            DropDownFilter(
-                              items: subCategoryFilter,
-                              selectedItem: subCategoryFilterSelectedValue,
-                            ),
-                            SizedBox(
-                              width: 10.w,
-                            ),
-                            DropDownFilter(
-                              items: priceFilter,
-                              selectedItem: priceFilterSelectedValue,
-                            ),
-                            SizedBox(
-                              width: 10.w,
-                            ),
-                            DropDownFilter(
-                              items: roomFilter,
-                              selectedItem: roomFilterSelectedValue,
-                            ),
-                            SizedBox(
-                              width: 20.w,
-                            ),
-                            DropDownFilter(
-                              items: typeFilter,
-                              selectedItem: typeFilterSelectedValue,
-                            ),
-                          ],
+      body: Padding(
+        padding: MediaQuery.sizeOf(context).width > 700
+            ? EdgeInsets.symmetric(horizontal: 200.0.w)
+            : EdgeInsets.zero,
+        child: Column(
+          children: [
+            AppbarWithTitleWidget(title: "قسم العقارات"),
+            Expanded(
+              child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 45.h,
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: [
+                              DropDownFilter(
+                                items: allfilters,
+                                selectedItem: allFilterSelectedValue,
+                              ),
+                              SizedBox(
+                                width: 10.w,
+                              ),
+                              DropDownFilter(
+                                items: subCategoryFilter,
+                                selectedItem: subCategoryFilterSelectedValue,
+                              ),
+                              SizedBox(
+                                width: 10.w,
+                              ),
+                              DropDownFilter(
+                                items: priceFilter,
+                                selectedItem: priceFilterSelectedValue,
+                              ),
+                              SizedBox(
+                                width: 10.w,
+                              ),
+                              DropDownFilter(
+                                items: roomFilter,
+                                selectedItem: roomFilterSelectedValue,
+                              ),
+                              SizedBox(
+                                width: 20.w,
+                              ),
+                              DropDownFilter(
+                                items: typeFilter,
+                                selectedItem: typeFilterSelectedValue,
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: TextWithAll(text: "كل الإعلانات", onTap: () {}),
-                      ),
-                      ListView.builder(
-                          itemCount: items.length,
-                          shrinkWrap: true,
-                          scrollDirection: Axis.vertical,
-                          physics: const NeverScrollableScrollPhysics(),
-                          padding: EdgeInsets.symmetric(vertical: 5),
-                          itemBuilder: (context, index) {
-                            if (items[index]["category"] == "1") {
-                              return Padding(
-                                padding: EdgeInsets.all(5.0.h),
-                                child: GestureDetector(
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            RealEstateAdScreen(),
-                                      ),
-                                    );
-                                  },
-                                  child: VerticalRealEstateCard(
-                                    image: items[index]["image"],
-                                  ),
-                                ),
-                              );
-                            } else {
-                              return Padding(
-                                padding: EdgeInsets.all(5.0.h),
-                                child: Container(
-                                  width: double.infinity,
-                                  height: 120.h,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(10.r),
-                                    child: Image.asset(
-                                      items[index]["image"]!,
-                                      fit: BoxFit.cover,
+                        SizedBox(
+                          height: 20.h,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child:
+                              TextWithAll(text: "كل الإعلانات", onTap: () {}),
+                        ),
+                        ListView.builder(
+                            itemCount: items.length,
+                            shrinkWrap: true,
+                            scrollDirection: Axis.vertical,
+                            physics: const NeverScrollableScrollPhysics(),
+                            padding: EdgeInsets.symmetric(vertical: 5),
+                            itemBuilder: (context, index) {
+                              if (items[index]["category"] == "1") {
+                                return Padding(
+                                  padding: EdgeInsets.all(5.0.h),
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              RealEstateAdScreen(),
+                                        ),
+                                      );
+                                    },
+                                    child: VerticalRealEstateCard(
+                                      image: items[index]["image"],
                                     ),
                                   ),
-                                ),
-                              );
-                            }
-                          })
-                    ],
-                  ),
-                )),
-          ),
-        ],
+                                );
+                              } else {
+                                return Padding(
+                                  padding: EdgeInsets.all(5.0.h),
+                                  child: Container(
+                                    width: double.infinity,
+                                    height: 230.h,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(10.r),
+                                      child: Image.asset(
+                                        items[index]["image"]!,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              }
+                            })
+                      ],
+                    ),
+                  )),
+            ),
+          ],
+        ),
       ),
     );
   }
